@@ -26,7 +26,7 @@ function createNotification(message) {
         notification.style.bottom = '20px';
         notification.style.right = '20px';
         notification.style.padding = '10px 20px';
-        notification.style.backgroundColor = '#f44336'; // Red background
+        notification.style.backgroundColor = '#000000'; // Red background
         notification.style.color = '#fff'; // White text
         notification.style.borderRadius = '5px';
         notification.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';

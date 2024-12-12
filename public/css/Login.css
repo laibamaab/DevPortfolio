@@ -135,3 +135,49 @@ button {
 button:hover {
     background-color: rgba(27, 58, 80, 1);
 }
+
+
+/* Media Queries for Mobile Screens */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 95%;
+        max-width: 500px;
+        padding: 15px;
+    }
+
+    .container h2 {
+        margin: -12px 0px 8px 10px;
+        font-size: 1.5rem;
+    }
+
+    .half-container {
+        display: none;
+    }
+
+    .text-container {
+        position: relative;
+        margin: 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .text-container h2 {
+        margin: 10px 0;
+        font-size: 1.8rem;
+    }
+
+    .text-container h4 {
+        margin: 10px 0;
+        font-size: 1rem;
+    }
+
+    .input-container {
+        width: 90%;
+        margin: 10px auto;
+    }
+
+    button {
+        margin: 20px auto;
+        width: 90%;
+    }
+}

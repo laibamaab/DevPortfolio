@@ -1,4 +1,4 @@
- body {
+        body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -60,7 +60,7 @@
         .header2 h1 {
             margin: 0; /* Remove margin for better alignment */
             font-size: 40px;
-            align-text: center;
+            text-align: center;
             margin-top: 50px;
             margin-left: 40px
         }
@@ -68,7 +68,7 @@
         .header2 p {
             margin: 5px ; /* Ensure vertical spacing */
             font-size: 16px;
-            align-text: center;
+            text-align: center;
             margin-left: 40px;
         }
 

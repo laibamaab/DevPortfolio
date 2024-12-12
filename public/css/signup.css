@@ -164,3 +164,68 @@ button {
 button:hover {
     background-color: rgba(27, 58, 80, 1);
 }
+
+
+/* Media Queries for Mobile Screens */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 95%;
+        max-width: 500px;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .container h2 {
+        float: none;
+        margin: 10px auto;
+        font-size: 1.8rem;
+    }
+
+    .half-container {
+        display: none;
+    }
+
+    .text-container {
+        position: relative;
+        margin: 0;
+        width: 100%;
+    }
+
+    .text-container h2 {
+        margin: 10px 0;
+        font-size: 1.8rem;
+    }
+
+    .text-container h4 {
+        margin: 10px 0;
+        font-size: 1rem;
+    }
+    .text-container p{
+        display: none;
+    }
+
+    .input-container {
+        width: 90%;
+        margin: 10px auto;
+    }
+
+    .input-container label {
+        margin: 10px 0;
+        display: block;
+        text-align: left;
+    }
+    .input-container select,
+    .input-container input {
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    button {
+        margin: 20px auto;
+        width: 90%;
+    }
+
+    .inline-button a {
+        margin: 10px auto;
+    }
+}

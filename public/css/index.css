@@ -6,6 +6,19 @@ body {
     overflow-x: hidden;
 }
 
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: black; 
+    color: #fff; /* White text */
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    z-index: 1000;
+    display: none; /* Hidden by default */
+}
 @font-face {
     font-family: sandor;
     src: url('../fonts/sandor/SandorTrial.ttf');
@@ -644,13 +657,11 @@ button:hover {
 .project-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* Three columns of equal width */
-    gap: 10px;
-    /* Add space between the containers */
+    gap: 50px;
 }
 
 .project-section {
-    width: 400px;
+    width: 350px;
     background-color: transparent;
     border: .05rem solid #FFFFFA;
     box-shadow:
@@ -730,3 +741,4 @@ button:hover {
 #goTop:hover {
     box-shadow: 3px 3px 3px #023353;
 }
+
