@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
+    <title>DevPortfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Lobster&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lobster&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Lobster&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <button onclick="topFunction()" id="goTop" title="Go to top"></button>
+
+        <%- include('partials/header.ejs') %>
+
+    <!-- About Section -->
+    <div class="about-container" id="about">
+        <section class="about">
+            <img src="images/TechSavior.png">
+            <div class="about-column1">
+                <h1> ABOUT</h1>
+                <h3>Personal Details</h3>
+                <h4>
+
+                    3+ years of experience in web development, specializing in HTML, CSS, and JavaScript.
+                    Focused on responsive design, performance optimization, and user-centric solutions.
+                    Experienced in collaborating with teams to deliver efficient, scalable websites.
+
+                </h4>
+                <b>Full Name :</b>     &ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp; &emsp; &emsp; Muniba Ali <br>
+                <b>Father’s Name :</b> &ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Muhammad Ali <br>
+                <b>Date of Birth :</b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 15-04-1996 <br>
+                <b>CNIC No :</b>       &ensp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 34101-8296360-9 <br>
+                <b>Nationality :</b>   &ensp;&nbsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp; Pakistani <br>
+                <b>Marital Status :</b> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; &emsp; &emsp; Single <br>
+                <a href="/resume"><button>Check Resume</button></a>
+            </div>
+        </section>
+        <div class="about-column2">
+            <div class="image1">
+                <img src="images/frontend.jpg" alt="backend picture">
+            </div>
+            <div class="image2">
+                <img src="images/backend.jpg" alt="frontend picture">
+            </div>
+        </div>
+    </div>
+    <hr>
+     
+    <%- include('partials/footer.ejs') %>
+    
+    <script src="javascript/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #101314;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
+    position: relative;
+    align-self: center;
+    width: 90%;
+    max-width: 600px;
+    height: auto;
+    padding: 20px;
+    border: 1px solid #36454F;
+    border-radius: 5px;
+    background-color: #101314;
+    box-shadow: 0 0 20px rgba(27, 58, 80, 1);
+    color: #FFFFFA;
+    overflow: hidden;
+}
+
+.container h2 {
+    font-family: "Playfair Display", serif;
+    font-style: normal;
+    margin: -12px 0px 8px 80px;
+    font-size: 2rem;
+}
+
+.half-container {
+    position: absolute;
+    width: 70%;
+    max-width: 420px;
+    height: 370px;
+    margin: -20px 0px 0px 380px;
+    background-color: #36454F;
+    transform: skewX(30deg);
+    display: flex;
+    box-shadow: 0 0 20px rgba(27, 58, 80, 1);
+}
+
+.text-container {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
+    position: absolute;
+    width: 80%;
+    max-width: 310px;
+    height: auto;
+    margin: 30px 0px 0px 310px;
+    text-align: right;
+    overflow: hidden;
+}
+
+.text-container h2 {
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2rem;
+    margin: 20px 30px 0px 110px;
+}
+
+.text-container h4 {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1rem;
+    margin: 20px 30px 0px 110px;
+}
+
+.input-container {
+    width: 100%;
+    max-width: 300px;
+}
+
+.input-container label {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
+    display: block;
+    font-size: 1rem;
+    color: #FFFFFA;
+    margin-bottom: 0px;
+}
+
+.input-container input {
+    width: 100%;
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
+    border: none;
+    border-bottom: 2px solid #36454F;
+    background: transparent;
+    color: #FFFFFA;
+    font-size: 1rem;
+    padding: 5px 10px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+button {
+    font-family: "Playfair Display", serif;
+    font-weight: 400;
+    font-style: normal;
+    padding: 10px 15px;
+    display: block;
+    margin: 20px 0px 20px 30px;
+    background-color: #36454F;
+    color: #FFFFFA;
+    border: none;
+    height: 40px;
+    width: 200px;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(27, 58, 80, 1);
+}
+
+.inline-button a {
+    text-decoration: none;
+    color: #36454F;
+}
+
+.inline-button a:hover {
+    text-decoration: underline;
+}
+
+button:hover {
+    background-color: rgba(27, 58, 80, 1);
+}

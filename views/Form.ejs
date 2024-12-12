@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>resumeform</title>
+    <link rel="stylesheet" href="css/styling.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Lobster&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lobster&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Lobster&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <form id="resume-form">
+        <div class="form-container">
+
+            <!-- Personal Information -->
+            <div class="form-section personal-form">
+                <h2>Personal Information</h2>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required style="height: 30px; width: 50%;">
+                </div>
+                <div class="form-group">
+                    <label for="title">Field / Professional Title:</label>
+                    <input type="text" id="title" name="title" placeholder="e.g., Software Engineer" style="height: 30px; width: 50%;">
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender" style="height: 30px; width: 52.5%;">
+                        <option value="female">Female</option>
+                        <option value="male">Male</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="bio">About You (Bio):</label>
+                    <textarea id="bio" name="bio" rows="4" maxlength="1000" placeholder="Write a short bio (1000 characters)..." style="width: 50%;"></textarea>
+                </div>
+            </div>
+
+            <!-- Education Section -->
+            <div class="form-section education-form">
+                <h2>Education</h2>
+                <div class="form-group">
+                    <label for="degree">Degree Program:</label>
+                    <input type="text" id="degree" name="degree" placeholder="e.g., Bachelor of Computer Science" style="height: 30px; width: 52.5%;">
+                </div>
+                <div class="form-group">
+                    <label for="institution">Institution:</label>
+                    <input type="text" id="institution" name="institution" placeholder="e.g., University of XYZ" style="height: 30px; width: 52.5%;">
+                </div>
+                <div class="form-group">
+                    <label for="graduation">Year of Graduation:</label>
+                    <input type="date" id="graduation" name="graduation" style="height: 30px; width: 52.5%;">
+                </div>
+                <button type="button" class="add-more" data-section-class="education-form">Add More Education</button>
+            </div>
+
+            <!-- Work Experience Section -->
+            <div class="form-section experience-form">
+                <h2>Work Experience</h2>
+                <div class="form-group">
+                    <label for="job-title">Job Title:</label>
+                    <input type="text" id="job-title" name="job-title" placeholder="e.g., Software Developer" style="height: 30px; width: 52.5%;">
+                </div>
+                <div class="form-group">
+                    <label for="company">Company / Organization Name:</label>
+                    <input type="text" id="company" name="company" placeholder="e.g., TechSavior" style="height: 30px; width: 52.5%;">
+                </div>
+                <div style="display: flex; gap: 20px;">
+                    <div class="form-group">
+                        <label for="start-date">Start Date:</label>
+                        <input type="date" id="start-date" name="start-date">
+                    </div>
+                    <div class="form-group">
+                        <label for="end-date">End Date:</label>
+                        <input type="date" id="end-date" name="end-date">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="job-description">Job Description:</label>
+                    <textarea id="job-description" name="job-description" rows="4" maxlength="1000" placeholder="Write a short job description (1000 characters)..." style="height: 90px; width: 52.5%;"></textarea>
+                </div>
+                <button type="button" class="add-more" data-section-class="experience-form">Add More Experience</button>
+            </div>
+
+            <!-- Projects -->
+            <div class="form-section project-form">
+                <h2>Projects</h2>
+                <div class="form-group">
+                    <label for="project-name">Project Name / Description:</label>
+                    <textarea id="project-name" name="project-name" rows="3" maxlength="2000" placeholder="Describe your project (2000 characters)" style="height: 90px; width: 52.5%"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="project-link">Project Links:</label>
+                    <input type="url" id="project-link" name="project-link" placeholder="e.g., https://github.com/yourproject" style="height: 30px; width: 52.5%">
+                </div>
+                <button type="button" class="add-more" data-section-class="project-form">Add More Projects</button>
+            </div>
+
+            <!-- Skills -->
+            <div class="form-section skill-form">
+            <h2>Skills</h2>
+            <div class="form-group">
+                <label for="skills">Technical / Soft Skills:</label>
+                <input type="text" id="skills" name="skills" placeholder="e.g., Python, JavaScript, Problem Solving" style="height: 30px; width: 52.5%">
+            </div>
+            <button type="button" class="add-more" data-section-class="skill-section">Add More Skills</button>
+        </div>
+
+            <!-- Contact Information -->
+            <div class="form-section contact-form">
+                <h2>Contact Information</h2>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required style="height: 30px; width: 52.5%;">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone:</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" style="height: 30px; width: 52.5%;">
+                </div>
+            </div>
+
+            <!-- Social Media Accounts -->
+            <div class="form-section account-form">
+                <h2>Social Media Accounts</h2>
+                <div class="form-group">
+                    <label for="linkedin">Linkedin:</label>
+                    <input type="url" id="linkedin" name="linkedin" placeholder="Enter your Linkedin profile URL." style="height: 30px; width: 52.5%">
+                </div>
+                <div class="form-group">
+                    <label for="github">Git Hub:</label>
+                    <input type="url" id="github" name="github" placeholder="Enter your Github profile URL." style="height: 30px; width: 52.5%">
+                </div>
+                <div class="form-group">
+                    <label for="website">Web Site:</label>
+                    <input type="url" id="website" name="website" placeholder="Enter your Website URL." style="height: 30px; width: 52.5%">
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-section submit-form">
+                <div class="form-group" style="text-align: center">
+                <button name="submit" id="submit" type="submit">Click Here To Submit</button>
+        </div>
+        </div>
+
+        </div>
+    </form>
+    
+    <script src="javascript/Form.js"></script> 
+</body>
+</html>

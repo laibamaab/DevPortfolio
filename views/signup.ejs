@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/signup.css">
+    <title>signup</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Lobster&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lobster&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Lobster&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="half-container"></div>
+    <div class="text-container">
+        <h2>WELCOME!</h2>
+        <h4>Join us and explore endless possibilities.</h4>
+        <p>Create your account to get<br>started on your journey<br> with us.</p>
+    </div>
+    <h2>Signup</h2>
+<div id="signupSection" class="form-section">
+    <form id="signupForm">
+        <div class="input-container">
+            <label id="email">Email Address:</label>
+            <div>
+                <i style="font-size:18px; margin-right:-510px;   position: absolete; transform: translateY(100%);" class="fa">&#xf0e0;</i>
+                <input type="email" id="signupEmail" required>
+            </div>
+
+            <label id="password" style="margin-top: 10px;">Password:</label>
+            <div>
+                <i style="font-size:18px; margin-right:-510px;   position: absolete; transform: translateY(100%);" class="fa">&#xf023;</i>
+                <input type="password" id="signupPassword" required>
+            </div>
+
+            <label id="confirmPassword" style="margin-top: 10px;">Confirm Password:</label>
+            <div>
+                <i style="font-size:18px; margin-right:-510px;   position: absolete; transform: translateY(100%);" class="fa">&#xf023;</i>
+                <input type="password" id="signupConfirmPassword" required>
+            </div>
+
+            <div class="input-container">
+                <label id="securityQuestion" style="margin-top: 10px;">Security Question:</label>
+                <select id="signupSecurityQuestion" required>
+                    <option value="" disabled selected>Select a question</option>
+                    <option value="pet">What is your best friend’s name?</option>
+                    <option value="school">What was the name of your first school?</option>
+                    <option value="city">In what city were you born?</option>
+                </select>
+            </div>
+
+            <label id="securityAnswer" style="margin-top: 10px;">Security Answer:</label>
+            <div>
+                <i style="font-size:18px; margin-right:-510px;   position: absolete; transform: translateY(100%);" class="fa">&#xf112;</i>
+                <input type="text" id="signupSecurityAnswer" required>
+            </div>
+        </div>
+        <button type="submit">Sign Up</button>
+    </form>
+    <div class="inline-button">
+        <h5 style="display: inline;">Already have an account? </h5>
+        <a id="showLogin">Login</a>
+    </div>
+</div>
+
+</div>
+<script src="javascript/Login.js"></script>
+</body>
+</html>
