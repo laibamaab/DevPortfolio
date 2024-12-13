@@ -5,7 +5,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color:  #101314;
+    background-color: #101314;
     font-family: Arial, sans-serif;
     overflow: hidden;
 }
@@ -21,7 +21,7 @@ body {
     padding: 20px;
     border: 1px solid #36454F;
     border-radius: 5px;
-    background-color:  #101314;
+    background-color: #101314;
     box-shadow: 0 0 20px rgba(27, 58, 80, 1);
     color: #FFFFFA;
     margin: 0;
@@ -165,6 +165,13 @@ button:hover {
     background-color: rgba(27, 58, 80, 1);
 }
 
+.icons{
+    font-size: 18px;
+    margin-left: 790px;
+    margin-top: -20px;
+    position: absolute;
+    transform: translateY(100%);
+}
 
 /* Media Queries for Mobile Screens */
 @media screen and (max-width: 768px) {
@@ -200,7 +207,8 @@ button:hover {
         margin: 10px 0;
         font-size: 1rem;
     }
-    .text-container p{
+
+    .text-container p {
         display: none;
     }
 
@@ -214,10 +222,19 @@ button:hover {
         display: block;
         text-align: left;
     }
+
     .input-container select,
     .input-container input {
         margin: 0 auto;
         width: 100%;
+    }
+
+    .icons{
+        font-size: 18px;
+        margin-left: 300px;
+        margin-top: -20px;
+        position: absolute;
+        transform: translateY(100%);
     }
 
     button {

@@ -136,6 +136,13 @@ button:hover {
     background-color: rgba(27, 58, 80, 1);
 }
 
+.icons {
+    font-size: 18px;
+    margin-left: 300px;
+    position: absolute;
+    margin-top: -7px;
+    transform: translateY(100%);
+}
 
 /* Media Queries for Mobile Screens */
 @media screen and (max-width: 768px) {

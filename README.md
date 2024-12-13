@@ -55,4 +55,4 @@ Follow these steps to set up the project on your local machine:
    npm install
 3. **Run the Server:**:
    ```bash
-   npm start
+   node app.js

@@ -11,7 +11,7 @@ body {
     bottom: 20px;
     right: 20px;
     padding: 10px 20px;
-    background-color: black; 
+    background-color: #101314; 
     color: #fff; /* White text */
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -105,7 +105,6 @@ hr {
     aspect-ratio: 1;
     border-radius: 50%;
     margin: auto;
-    margin-top: -20px;
     background-image: url("../images/profile1.png");
     background-size: cover;
     background-repeat: no-repeat;
