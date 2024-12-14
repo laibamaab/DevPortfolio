@@ -14,40 +14,41 @@
     <link rel="website icon" type="png" href="images/logo.png">
 </head>
 <body>
-<div class="container">
-    <div class="half-container"></div>
-    <div class="text-container">
-        <h2>WELCOME</h2>
-        <h2 style="margin-top: 0px "> BACK!</h2>
-        <h4>We're glad to <br>see you on our <br>portfolio website.</h4>
-    </div>
-    <h2 id="formTitle">Login</h2>
-    <div id="errorMessage" class="error"></div>
 
-    <div id="loginSection" class="form-section">
-        <form id="loginForm">
-            <div class="input-container">
-            <label id="email">Email Address:</label>
-            <div>
-                <i class="fa icons">&#xf0e0;</i>
-                <input type="email" id="loginEmail" required>
-            </div>
+    <div class="container">
+        <div class="half-container"></div>
+        <div class="text-container">
+            <h2>WELCOME</h2>
+            <h2 style="margin-top: 0px "> BACK!</h2>
+            <h4>We're glad to <br>see you on our <br>portfolio website.</h4>
+        </div>
+        <h2 id="formTitle">Login</h2>
+        <div id="errorMessage" class="error"></div>
 
-            <label id="password" style="margin-top: 10px;">Password:</label>
-            <div>
-                <i class="fa icons">&#xf023;</i>
-                <input type="password" id="loginPassword" required>
+        <div id="loginSection" class="form-section">
+            <form id="loginForm" method="post" action="/login">
+                <div class="input-container">
+                <label id="email">Email Address:</label>
+                <div>
+                    <i class="fa icons">&#xf0e0;</i>
+                    <input type="email" id="loginEmail" required>
+                </div>
+
+                <label id="password" style="margin-top: 10px;">Password:</label>
+                <div>
+                    <i class="fa icons">&#xf023;</i>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+            <div class="inline-button">
+            <h5 style="display: inline;">Don't have an account? </h5>
+            <a id="showSignup">Create Account</a>
+            <a id="showForgotPassword" style="display: block; margin-top: 5px;">Forgot Password?</a>
             </div>
-            </div>
-            <button type="submit" >Login</button>
-        </form>
-        <div class="inline-button">
-        <h5 style="display: inline;">Don't have an account? </h5>
-        <a id="showSignup">Create Account</a>
-        <a id="showForgotPassword" style="display: block; margin-top: 5px;">Forgot Password?</a>
         </div>
     </div>
-</div>
 <script src="javascript/Login.js"></script>
 </body>
 </html>

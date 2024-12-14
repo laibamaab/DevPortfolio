@@ -23,14 +23,18 @@ function createNotification(message) {
         notification.className = 'notification';
         document.body.appendChild(notification);
         notification.style.position = 'fixed';
-        notification.style.bottom = '20px';
-        notification.style.right = '20px';
-        notification.style.padding = '10px 20px';
-        notification.style.backgroundColor = '#000000'; // Red background
-        notification.style.color = '#fff'; // White text
+        notification.style.top = '50%'; // Center vertically
+        notification.style.left = '50%'; // Center horizontally
+        notification.style.transform = 'translate(-50%, -50%)'; // Adjust to center the notification
+        notification.style.padding = 'auto';
+        notification.style.backgroundColor = '#fff'; // Black background
+        notification.style.color = '#000000'; // White text
         notification.style.borderRadius = '5px';
         notification.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
-        notification.style.fontSize = '14px';
+        notification.style.fontSize = '18px';
+        notification.style.width = '300px';
+        notification.style.height = '30px';
+        notification.style.textAlign = 'center';
         notification.style.zIndex = '1000';
         notification.style.display = 'none';
     }
@@ -103,10 +107,10 @@ document.getElementById('resume-form').addEventListener('submit', (event) => {
     event.preventDefault();  // Prevent page reload
     const formData = collectFormData();
     if (validateForm(formData)) {
-        console.log("Form Submitted Successfully", formData);
-        alert("Form submitted successfully!");
+        createNotification("Form Submitted Successfully");
+        window.location.href = '/';
     } else {
-        alert("Please fill in all required fields.");
+        createNotification("Please fill in all required fields.");
     }
 });
 

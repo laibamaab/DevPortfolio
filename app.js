@@ -46,6 +46,22 @@ app.get('/signup', (request, response) =>{
 app.get('/forget-password', (request, response) =>{
     response.render('Forgetpassword')
 });
+
+app.post('/form', (request, response) =>{
+    response.redirect('/')
+});
+
+app.post('/login', (request, response) =>{
+    response.redirect('/')
+});
+
+app.post('/signup', (request, response) =>{
+    response.redirect('/')
+});
+
+app.post('/forget', (request, response) =>{
+    response.redirect('/login')
+});
 app.listen(3000, ()=>{
     console.log('http://127.0.0.1:3000');
 });
