@@ -112,7 +112,7 @@ button {
     padding: 10px 15px;
     display: block;
     margin: 20px 0px 20px 30px;
-    background-color: #36454F;
+    background-color: transparent;
     color: #FFFFFA;
     border: none;
     height: 40px;
@@ -121,6 +121,8 @@ button {
     border-radius: 50px;
     cursor: pointer;
     box-shadow: 0 0 10px rgba(27, 58, 80, 1);
+    transition: background-color 0.3s;
+    transition: 0.3s ease;
 }
 
 .inline-button a {
@@ -133,7 +135,9 @@ button {
 }
 
 button:hover {
-    background-color: rgba(27, 58, 80, 1);
+    background-color: #36454F !important;
+    color: #FFFFFA !important;
+    transform: scale(1.1);
 }
 
 .icons {

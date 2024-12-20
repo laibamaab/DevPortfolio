@@ -33,7 +33,7 @@ function createNotification(message) {
         notification.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
         notification.style.fontSize = '18px';
         notification.style.width = '300px';
-        notification.style.height = '30px';
+        notification.style.height = '50px';
         notification.style.textAlign = 'center';
         notification.style.zIndex = '1000';
         notification.style.display = 'none';
@@ -51,7 +51,7 @@ function createNotification(message) {
 
 // Initialize counters for each section type
 const sectionLimits = {
-    'education-form': 3,
+    'education-form': 2,
     'experience-form': 4,
     'project-form': 6,
     'skill-form': 10,

@@ -1,9 +1,15 @@
 const express = require('express');
 const app = express();
+const routes = require('./routes/apiroutes');
+const database = require('./db/connection');
 
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use('/api', routes);
 
+database();
 app.get('/', (request, response) =>{
     response.render('home')
 });
@@ -51,17 +57,6 @@ app.post('/form', (request, response) =>{
     response.redirect('/')
 });
 
-app.post('/login', (request, response) =>{
-    response.redirect('/')
-});
-
-app.post('/signup', (request, response) =>{
-    response.redirect('/')
-});
-
-app.post('/forget', (request, response) =>{
-    response.redirect('/login')
-});
-app.listen(3000, ()=>{
-    console.log('http://127.0.0.1:3000');
+app.listen(7999, ()=>{
+    console.log('http://127.0.0.1:7999');
 });

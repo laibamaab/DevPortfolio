@@ -1,30 +1,83 @@
-// Handle form submissions and basic validation
 document.addEventListener('DOMContentLoaded', () => {
+    // Create a notification element
+function createNotification(message) {
+    // Check if a notification already exists
+    let notification = document.querySelector('.notification');
+    if (!notification) {
+        // Create and style the notification element
+        notification = document.createElement('div');
+        notification.className = 'notification';
+        document.body.appendChild(notification);
+        notification.style.position = 'fixed';
+        notification.style.top = '50%'; 
+        notification.style.left = '50%'; 
+        notification.style.transform = 'translate(-50%, -50%)'; 
+        notification.style.paddingTop = '20px';
+        notification.style.backgroundColor = '#000000'; 
+        notification.style.color = '#ffffff'; 
+        notification.style.borderRadius = '5px';
+        notification.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+        notification.style.fontSize = '18px';
+        notification.style.width = '300px';
+        notification.style.height = '50px';
+        notification.style.textAlign = 'center';
+        notification.style.zIndex = '1000';
+        notification.style.display = 'none';
+    }
+
+    // Set the message and show the notification
+    notification.textContent = message;
+    notification.style.display = 'block';
+
+    // Hide the notification after 3 seconds
+    setTimeout(() => {
+        notification.style.display = 'none';
+    }, 3000);
+}
     // Login Form Submission
     const loginForm = document.getElementById('loginForm');
     if (loginForm) {
-        loginForm.addEventListener('submit', (e) => {
+        loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
-
-            if (email && password) {
-                alert('Login successful!');
-                // Add actual login logic here (e.g., API calls)
-            } else {
-                alert('Please enter valid credentials.');
-            }
+            const userData = {
+                email: email,
+                password: password
+            };
+            try {
+                const response = await fetch('/api/login', {  
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(userData),  
+                });
+    
+                const result = await response.json();  
+    
+                if (response.ok) {
+                    console.log(result.message);  
+                    window.location.href = '/';  
+                } else {
+                    createNotification(result.message);
+                }
+            } catch (error) {
+                createNotification('An error occurred during login: ' + error.message)
+                }
         });
     }
 
-    // Signup Form Submission
+   // Signup Form Submission
     const signupForm = document.getElementById('signupForm');
     if (signupForm) {
-        signupForm.addEventListener('submit', (e) => {
+        signupForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+
             const email = document.getElementById('signupEmail').value;
             const password = document.getElementById('signupPassword').value;
             const confirmPassword = document.getElementById('signupConfirmPassword').value;
+            const securityQuestion = document.getElementById('signupSecurityQuestion').value;
             const securityAnswer = document.getElementById('signupSecurityAnswer').value;
 
             if (password !== confirmPassword) {
@@ -33,38 +86,90 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (email && password && securityAnswer) {
-                alert('Signup successful!');
-                // Add actual signup logic here
+                const userData = {
+                    email: email,
+                    password: password,
+                    securityQuestion: securityQuestion,
+                    securityAnswer: securityAnswer
+                };
+
+                try {
+                    const response = await fetch('/api/signup', {  
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(userData),  
+                    });
+
+                    const result = await response.json();  
+
+                    if (response.ok) {
+                        console.log(result.message);  
+                        window.location.href = '/login';  
+                    } else {
+                        createNotification(result.message);  
+                    }
+                } catch (error) {
+                    createNotification('An error occurred during Signup: ' + error.message);
+                }
             } else {
-                alert('Please fill out all fields.');
+                createNotification('Please fill out all fields.');
             }
         });
     }
+
 
     // Forgot Password Form Submission
     const forgotPasswordForm = document.getElementById('forgotPasswordForm');
     if (forgotPasswordForm) {
-        forgotPasswordForm.addEventListener('submit', (e) => {
+        forgotPasswordForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('fpEmail').value;
             const securityAnswer = document.getElementById('fpSecurityAnswer').value;
+            const securityQuestion = document.getElementById('fpSecurityQuestion').value;
             const newPassword = document.getElementById('newPassword').value;
 
             if (email && securityAnswer && newPassword) {
-                alert('Password reset successful!');
-                // Add actual password reset logic here
+                const userData = {
+                    email: email,
+                    password: newPassword,
+                    securityQuestion: securityQuestion,
+                    securityAnswer: securityAnswer
+                };
+
+                try {
+                    const response = await fetch(`/api/forget/${email}`, {  
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(userData),  
+                    });
+
+                    const result = await response.json();  
+
+                    if (response.ok) {
+                        console.log(result.message); 
+                        createNotification('Password reset successful!'); 
+                        window.location.href = '/login';  
+                    } else {
+                        createNotification(result.message); 
+                    }
+                } catch (error) {
+                    createNotification('An error occurred during registration: ' + error.message);
+                }
             } else {
-                alert('Please complete all fields.');
+                createNotification('Please complete all fields.');
             }
         });
     }
 
-    // Page Navigation between forms
     const showForgotPassword = document.getElementById('showForgotPassword');
     if (showForgotPassword) {
         showForgotPassword.addEventListener('click', (e) => {
             e.preventDefault();
-            window.location.href = '/forget-password'; // Redirect to Forget Password page
+            window.location.href = '/forget-password'; 
         });
     }
 
@@ -72,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (showLoginFromForgot) {
         showLoginFromForgot.addEventListener('click', (e) => {
             e.preventDefault();
-            window.location.href = '/login'; // Redirect back to Login page
+            window.location.href = '/login'; 
         });
     }
 
@@ -80,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (showLogin) {
         showLogin.addEventListener('click', (e) => {
             e.preventDefault();
-            window.location.href = '/login'; // Redirect to Login page from Signup
+            window.location.href = '/login'; 
         });
     }
 
@@ -88,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (showSignup) {
         showSignup.addEventListener('click', (e) => {
             e.preventDefault();
-            window.location.href = '/signup'; // Redirect to Signup page from Login
+            window.location.href = '/signup'; 
         });
     }
 });

@@ -97,7 +97,7 @@ hr {
     font-family: "Playfair Display", serif;
     font-optical-sizing: auto;
     color: #FFFFFA;
-    font-weight: 10px;
+    font-weight: bold;
     font-style: normal;
 }
 
@@ -121,15 +121,15 @@ hr {
 
 /* Header Section*/
 .navbar {
-    display: flex;
-    width: 93%;
+    display: grid;
+    width: 100%;
     height: 100%;
     margin-top: -40px;
+    grid-template-columns: 20% 50% 20%;
 }
 
 .navbar ul {
     display: flex;
-    margin-left: 370px;
     gap: .2rem;
     list-style: none;
     position: absolute;
@@ -249,7 +249,7 @@ button {
     font-family: "Playfair Display", serif;
     font-style: normal;
     padding: 10px 20px;
-    background-color: #101314;
+    background-color: transparent;
     color: #FFFFFA;
     margin-top: 20px;
     border: none;
@@ -312,12 +312,10 @@ button:hover {
     background-color: transparent;
     width: 30%;
     height: 100%;
-    /* position: absolute; */
     margin-left: 55%;
 }
 
 .footer-column3 {
-    /* margin-top: 50%; */
     width: 5px;
     border-radius: 30px;
     background-color: rgba(27, 58, 80, 1);
@@ -740,4 +738,3 @@ button:hover {
 #goTop:hover {
     box-shadow: 3px 3px 3px #023353;
 }
-
