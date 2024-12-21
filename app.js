@@ -41,6 +41,10 @@ app.get('/form', (request, response) =>{
     response.render('Form');
 });
 
+app.get('/update-form', (request, response) =>{
+    response.render('updateForm');
+});
+
 app.get('/login', (request, response) =>{
     response.render('Login');
 });

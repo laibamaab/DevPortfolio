@@ -54,7 +54,7 @@ const sectionLimits = {
     'education-form': 2,
     'experience-form': 4,
     'project-form': 6,
-    'skill-form': 10,
+    'skill-form': 8,
 };
 
 const sectionCounters = {
@@ -102,18 +102,6 @@ document.querySelectorAll('.add-more').forEach((button) => {
     });
 });
 
-// Handle form submission
-document.getElementById('resume-form').addEventListener('submit', (event) => {
-    event.preventDefault();  // Prevent page reload
-    const formData = collectFormData();
-    if (validateForm(formData)) {
-        createNotification("Form Submitted Successfully");
-        window.location.href = '/';
-    } else {
-        createNotification("Please fill in all required fields.");
-    }
-});
-
 // Collect all form data
 function collectFormData() {
     const formData = {};
@@ -133,3 +121,143 @@ function validateForm(data) {
     }
     return true;
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    function createNotification(message) {
+        let notification = document.querySelector('.notification');
+        if (!notification) {
+            notification = document.createElement('div');
+            notification.className = 'notification';
+            document.body.appendChild(notification);
+            notification.style.position = 'fixed';
+            notification.style.top = '50%'; 
+            notification.style.left = '50%'; 
+            notification.style.transform = 'translate(-50%, -50%)'; 
+            notification.style.paddingTop = '20px';
+            notification.style.backgroundColor = '#000000'; 
+            notification.style.color = '#ffffff'; 
+            notification.style.borderRadius = '5px';
+            notification.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+            notification.style.fontSize = '18px';
+            notification.style.width = '300px';
+            notification.style.height = '50px';
+            notification.style.textAlign = 'center';
+            notification.style.zIndex = '1000';
+            notification.style.display = 'none';
+        }
+
+        notification.textContent = message;
+        notification.style.display = 'block';
+
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 3000);
+    }
+
+    const handleFormSubmission = async (event, apiEndpoint, method) => {
+        event.preventDefault();
+        const userId = localStorage.getItem('userId');
+        if (!userId) {
+            createNotification('You must be logged in to submit the form.');
+            return;
+        }
+        
+            const formData = {
+                personalInfo: {
+                    name: document.getElementById('name').value,
+                    fatherName: document.getElementById('fatherName').value,
+                    cnic: document.getElementById('cnic').value,
+                    nationality: document.getElementById('nationality').value,
+                    dateOfBirth: document.getElementById('dateOfBirth').value,
+                    maritalStatus: document.getElementById('maritalStatus').value,
+                    fieldTitle: document.getElementById('title').value,
+                    gender: document.getElementById('gender').value,
+                    imagePath: document.getElementById('image').files[0]?.name,  // Assuming image is uploaded as a file
+                    bio: document.getElementById('bio').value
+                },
+                education: [{
+                    degree: document.getElementById('degree').value,
+                    institution: document.getElementById('institution').value,
+                    city: document.getElementById('city').value,
+                    graduation: document.getElementById('graduation').value
+                }],
+                workExperience: [{
+                    jobTitle: document.getElementById('job-title').value,
+                    company: document.getElementById('company').value,
+                    startDate: document.getElementById('start-date').value,
+                    endDate: document.getElementById('end-date').value,
+                    jobDescription: document.getElementById('job-description').value
+                }],
+                projects: [{
+                    projectName: document.getElementById('project-name').value,
+                    projectDescription: document.getElementById('project-description').value,
+                    projectImage: document.getElementById('projectImage').files[0]?.name, // Assuming project image is uploaded as a file
+                    projectLink: document.getElementById('project-link').value
+                }],
+                skills: [{
+                    skill: document.getElementById('skills').value.split(','),
+                    skillImage: document.getElementById('skillImage').files[0]?.name, // Assuming skill image is uploaded as a file
+                    proficiency: document.getElementById('proficiency').value,
+                    skillDescription: document.getElementById('skillDescription').value
+                }],
+                contactInfo: {
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    address: document.getElementById('address').value
+                },
+                socialMedia: {
+                    linkedin: document.getElementById('linkedin').value,
+                    github: document.getElementById('github').value,
+                    youtube: document.getElementById('youtube').value,
+                    twitter: document.getElementById('twitter').value,
+                    instagram: document.getElementById('instagram').value
+                }
+            };
+    
+        try {
+            const response = await fetch(apiEndpoint, {
+                method,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+    
+            const result = await response.json();
+            if (response.ok) {
+                createNotification(method === 'POST' ? 'Form submitted successfully!' : 'Form updated successfully!');
+                event.target.reset(); 
+            } else {
+                createNotification(`Error: ${result.message}`);
+            }
+        } catch (error) {
+            createNotification(`An error occurred: ${error.message}`);
+        }
+    };
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('resume-form');
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                handleFormSubmission(e, '/api/submit-form', 'POST');
+            });
+        } else {
+            console.log('Form with ID "resume-form" not found');
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('resume-update-form');
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                handleFormSubmission(e, '/api/update-form', 'PUT');
+            });
+        } else {
+            console.log('Form with ID "resume-update-form" not found');
+        }
+    });
+        
+        
+});
+

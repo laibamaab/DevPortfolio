@@ -3,13 +3,17 @@ const router = express.Router();
 const Form = require('../models/formSchema'); 
 const User = require('../models/userSchema');
 
-router.post('/form', async (req, res) => {
+router.post('/submit-form', async (req, res) => {
   try {
-    const newForm = new Form(req.body); 
-    const savedForm = await newForm.save();
-    res.status(201).json({ message: "Form submitted successfully", data: savedForm });
+      const formData = req.body;
+
+      const newForm = new Form(formData);
+
+      await newForm.save();
+      res.status(200).json({ message: 'Form submitted successfully!' });
   } catch (error) {
-    res.status(400).json({ message: "Error submitting form", error: error.message });
+      console.error(error);
+      res.status(500).json({ message: 'Error submitting the form', error: error.message });
   }
 });
 
@@ -34,27 +38,27 @@ router.get('/form/:id', async (req, res) => {
   }
 });
 
-router.put('/form/:id', async (req, res) => {
+router.put('/submit-form/:email', async (req, res) => {
   try {
-    const updatedForm = await Form.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
-    if (!updatedForm) {
-      return res.status(404).json({ message: "Form not found" });
-    }
-    res.status(200).json({ message: "Form updated successfully", data: updatedForm });
-  } catch (error) {
-    res.status(400).json({ message: "Error updating form", error: error.message });
-  }
-});
+      const user = await User.findOne({ email: req.params });
 
-router.delete('/form/:id', async (req, res) => {
-  try {
-    const deletedForm = await Form.findByIdAndDelete(req.params.id);
-    if (!deletedForm) {
-      return res.status(404).json({ message: "Form not found" });
-    }
-    res.status(200).json({ message: "Form deleted successfully", data: deletedForm });
+      if (!user) {
+          return res.status(404).json({ message: "User not found" });
+      }
+
+      const updatedForm = await Form.findOneAndUpdate(
+          { userId: user._id }, 
+          req.body, 
+          { new: true } 
+      );
+
+      if (!updatedForm) {
+          return res.status(404).json({ message: "Form not found" });
+      }
+
+      res.status(200).json({ message: "Form updated successfully", data: updatedForm });
   } catch (error) {
-    res.status(500).json({ message: "Error deleting form", error: error.message });
+      res.status(400).json({ message: "Error updating form", error: error.message });
   }
 });
 
@@ -140,6 +144,7 @@ router.delete('/delete/:email', async (req, res) => {
         if (!isPasswordValid) {
             return res.status(401).json({ message: "Invalid credentials" });
         }
+        await Form.deleteOne({ userId: user._id });
 
         const deletedUser = await User.deleteOne({ email });
 
