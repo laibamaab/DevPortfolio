@@ -1,5 +1,5 @@
 body {
-    font-family: "Libre Baskerville", serif;
+    font-family: " Regular Sans";
     font-weight: 400;
     font-style: normal;
     background-color: #101314;
@@ -94,7 +94,7 @@ hr {
 
 .bio p {
     text-align: justify;
-    font-family: "Playfair Display", serif;
+    font-family: " Black bold Sans";
     font-optical-sizing: auto;
     color: #FFFFFA;
     font-weight: bold;
@@ -173,7 +173,7 @@ hr {
 }
 
 .form-section {
-    font-family: "Libre Baskerville", serif;
+    font-family: " Regular Sans";
     font-weight: 400;
     font-style: normal;
     margin-bottom: 20px;
@@ -186,7 +186,7 @@ hr {
 }
 
 .form-section h2 {
-    font-family: "Playfair Display", serif;
+    font-family: " Black bold Sans";
     font-optical-sizing: auto;
     font-weight: 90px;
     font-style: normal;
@@ -212,7 +212,7 @@ hr {
 .form-group input,
 .form-group select,
 .form-group textarea {
-    font-family: "Libre Baskerville", serif;
+    font-family: " Regular Sans";
     font-style: normal;
     border-right: 2px solid #36454F;
     border-bottom: 2px solid #36454F;
@@ -225,7 +225,7 @@ hr {
 }
 
 .form-group select option {
-    font-family: "Libre Baskerville", serif;
+    font-family: " Regular Sans";
     font-style: normal;
     background: #36454F;
     color: #fff;
@@ -246,7 +246,7 @@ hr {
 }
 
 button {
-    font-family: "Playfair Display", serif;
+    font-family: " Black bold Sans";
     font-style: normal;
     padding: 10px 20px;
     background-color: transparent;
@@ -272,7 +272,7 @@ button:hover {
 /* footer Section */
 
 .main-footer {
-    font-family: "Playfair Display", serif;
+    font-family: " Black bold Sans";
     font-style: normal;
     background-color: #101314;
     color: #FFFFFA;
@@ -356,7 +356,7 @@ button:hover {
 .about-container {
     margin: auto;
     overflow: hidden;
-    font-family: "Playfair Display", serif;
+    font-family: " Black bold Sans";
     font-style: normal;
     color: #FFFFFA;
     width: 96%;
@@ -470,7 +470,7 @@ button:hover {
 
 .skill-container {
     margin: auto;
-    font-family: "Playfair Display", serif;
+    font-family: " Black bold Sans";
     font-style: normal;
     color: #FFFFFA;
     margin: 10px;
@@ -566,7 +566,7 @@ button:hover {
 
 .education-container {
     margin: auto;
-    font-family: "Playfair Display", serif;
+    font-family: " Black bold Sans";
     font-style: normal;
     color: #FFFFFA;
     margin: 10px;
@@ -642,7 +642,7 @@ button:hover {
 
 .project-container {
     margin: auto;
-    font-family: "Playfair Display", serif;
+    font-family: " Black bold Sans";
     font-style: normal;
     color: #FFFFFA;
     margin: 10px;

@@ -11,52 +11,52 @@ app.use('/api', routes);
 
 database();
 app.get('/', (request, response) =>{
-    response.render('home')
+    response.render('home');
 });
 
 app.get('/about', (request, response) =>{
-    response.render('about')
+    response.render('about');
 });
 app.get('/education', (request, response) =>{
-    response.render('education')
+    response.render('education');
 });
 
 app.get('/experience', (request, response) =>{
-    response.render('education')
+    response.render('education');
 });
 
 app.get('/skills', (request, response) =>{
-    response.render('skills')
+    response.render('skills');
 });
 
 app.get('/resume', (request, response) =>{
-    response.render('resume')
+    response.render('resume');
 });
 
 app.get('/projects', (request, response) =>{
-    response.render('projects')
+    response.render('projects');
 });
 
 app.get('/form', (request, response) =>{
-    response.render('Form')
+    response.render('Form');
 });
 
 app.get('/login', (request, response) =>{
-    response.render('Login')
+    response.render('Login');
 });
 
 app.get('/signup', (request, response) =>{
-    response.render('signup')
+    response.render('signup');
 });
 
 app.get('/forget-password', (request, response) =>{
-    response.render('Forgetpassword')
+    response.render('Forgetpassword');
 });
 
-app.post('/form', (request, response) =>{
-    response.redirect('/')
+app.get('/delete-account', (request, response) =>{
+    response.render('delete_account');
 });
 
-app.listen(7999, ()=>{
-    console.log('http://127.0.0.1:7999');
+app.listen(7998, ()=>{
+    console.log('http://127.0.0.1:7998');
 });

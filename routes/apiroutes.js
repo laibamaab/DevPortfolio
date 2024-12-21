@@ -126,18 +126,31 @@ router.put('/forget/:email', async (req, res) => {
       res.status(500).json({ message: "Error updating user", error: error.message });
     }
   });
-  
 
-router.delete('/user/:id', async (req, res) => {
-  try {
-    const deletedUser = await User.findByIdAndDelete(req.params.id);
-    if (!deletedUser) {
-      return res.status(404).json({ message: "User not found" });
+router.delete('/delete/:email', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        const isPasswordValid = await User.findOne({password});
+        if (!isPasswordValid) {
+            return res.status(401).json({ message: "Invalid credentials" });
+        }
+
+        const deletedUser = await User.deleteOne({ email });
+
+        if (deletedUser.deletedCount === 0) {
+            return res.status(404).json({ message: "User not found or already deleted" });
+        }
+        res.status(200).json({ message: "User deleted successfully" });
+
+    } catch (error) {
+        res.status(500).json({ message: "An error occurred", error: error.message });
     }
-    res.status(200).json({ message: "User deleted successfully", data: deletedUser });
-  } catch (error) {
-    res.status(500).json({ message: "Error deleting user", error: error.message });
-  }
 });
 
 module.exports = router;

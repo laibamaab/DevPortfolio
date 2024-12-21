@@ -1,39 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Create a notification element
-function createNotification(message) {
-    // Check if a notification already exists
-    let notification = document.querySelector('.notification');
-    if (!notification) {
-        // Create and style the notification element
-        notification = document.createElement('div');
-        notification.className = 'notification';
-        document.body.appendChild(notification);
-        notification.style.position = 'fixed';
-        notification.style.top = '50%'; 
-        notification.style.left = '50%'; 
-        notification.style.transform = 'translate(-50%, -50%)'; 
-        notification.style.paddingTop = '20px';
-        notification.style.backgroundColor = '#000000'; 
-        notification.style.color = '#ffffff'; 
-        notification.style.borderRadius = '5px';
-        notification.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
-        notification.style.fontSize = '18px';
-        notification.style.width = '300px';
-        notification.style.height = '50px';
-        notification.style.textAlign = 'center';
-        notification.style.zIndex = '1000';
-        notification.style.display = 'none';
+
+    function createNotification(message) {
+        let notification = document.querySelector('.notification');
+        if (!notification) {
+            notification = document.createElement('div');
+            notification.className = 'notification';
+            document.body.appendChild(notification);
+            notification.style.position = 'fixed';
+            notification.style.top = '50%'; 
+            notification.style.left = '50%'; 
+            notification.style.transform = 'translate(-50%, -50%)'; 
+            notification.style.paddingTop = '20px';
+            notification.style.backgroundColor = '#000000'; 
+            notification.style.color = '#ffffff'; 
+            notification.style.borderRadius = '5px';
+            notification.style.boxShadow = '0 4px 6px rgba(0,0,0,0.1)';
+            notification.style.fontSize = '18px';
+            notification.style.width = '300px';
+            notification.style.height = '50px';
+            notification.style.textAlign = 'center';
+            notification.style.zIndex = '1000';
+            notification.style.display = 'none';
+        }
+
+        notification.textContent = message;
+        notification.style.display = 'block';
+
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 3000);
     }
-
-    // Set the message and show the notification
-    notification.textContent = message;
-    notification.style.display = 'block';
-
-    // Hide the notification after 3 seconds
-    setTimeout(() => {
-        notification.style.display = 'none';
-    }, 3000);
-}
     // Login Form Submission
     const loginForm = document.getElementById('loginForm');
     if (loginForm) {
@@ -64,6 +60,41 @@ function createNotification(message) {
                 }
             } catch (error) {
                 createNotification('An error occurred during login: ' + error.message)
+                }
+        });
+    }
+        
+    // deletion Form Submission
+    const deleteUserForm = document.getElementById('deleteForm');
+    if (deleteUserForm) {
+        deleteUserForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('deleteEmail').value;
+            const password = document.getElementById('deletePassword').value;
+            const userData = {
+                email: email,
+                password: password
+            };
+            try {
+                const response = await fetch(`/api/delete/${email}`, {  
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(userData),  
+                });
+    
+                const result = await response.json();  
+    
+                if (response.ok) {
+                    console.log(result.message);  
+                    createNotification('User deleted successfully');
+                    window.location.href = '/signup';  
+                } else {
+                    createNotification(result.message);
+                }
+            } catch (error) {
+                createNotification('An error occurred during deletion: ' + error.message)
                 }
         });
     }

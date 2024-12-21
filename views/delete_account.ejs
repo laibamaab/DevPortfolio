@@ -16,39 +16,33 @@
 <body>
 
     <div class="container">
-        <div class="half-container"></div>
-        <div class="text-container">
-            <h2>WELCOME</h2>
-            <h2 style="margin-top: 0px "> BACK!</h2>
-            <h4>We're glad to <br>see you on our <br>portfolio website.</h4>
-        </div>
-        <h2 id="formTitle">Login</h2>
+        <h2 id="formTitle">Delete Account</h2>
         <div id="errorMessage" class="error"></div>
 
-        <div id="loginSection" class="form-section">
-            <form id="loginForm" method="post" action="/login">
+        <div id="deleteSection" class="form-section">
+            <form id="deleteForm" method="delete">
                 <div class="input-container">
                 <label id="email">Email Address:</label>
                 <div>
                     <i class="fa icons">&#xf0e0;</i>
-                    <input type="email" id="loginEmail" required>
+                    <input type="email" id="deleteEmail" required>
                 </div>
 
                 <label id="password" style="margin-top: 10px;">Password:</label>
                 <div>
                     <i class="fa icons">&#xf023;</i>
-                    <input type="password" id="loginPassword" required>
+                    <input type="password" id="deletePassword" required>
                 </div>
                 </div>
-                <button type="submit">Login</button>
+                <button type="submit">Delete</button>
             </form>
             <div class="inline-button">
-            <h5 style="display: inline;">Don't have an account? </h5>
-            <a id="showSignup">Create Account</a>
-            <a id="showForgotPassword" style="display: block; margin-top: 5px;">Forgot Password?</a>
+            <h5 style="display: inline;">Want to go back to login? </h5>
+            <a id="showLogin" href="/login">Login</a>
+            <a id="showForgotPassword" style="display: block; margin-top: 5px;" href="/forget">Forgot Password?</a>
             </div>
         </div>
     </div>
-<script src="javascript/user.js"></script>
+    <script src="javascript/user.js"></script>
 </body>
 </html>
