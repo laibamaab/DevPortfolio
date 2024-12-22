@@ -2,38 +2,11 @@ const express = require('express');
 const router = express.Router();
 const Form = require('../models/formSchema'); 
 const User = require('../models/userSchema');
-
-router.post('/submit-form', async (req, res) => {
-  try {
-    const formData = req.body;
-
-    const newForm = new Form(formData);
-
-    await newForm.save();
-    res.status(200).json({ message: 'Form submitted successfully!' });
-  } catch (error) {
-    if (error.name === 'ValidationError') {
-      const errors = Object.values(error.errors).map(err => err.message);
-      res.status(400).json({ message: 'Validation failed', errors });
-    } else {
-      console.error(error);
-      res.status(500).json({ message: 'Server error', error: error.message });
-    }
-  }
-});
-
-router.get('/form', async (req, res) => {
-  try {
-    const forms = await Form.find();
-    res.status(200).json(forms);
-  } catch (error) {
-    res.status(500).json({ message: "Error fetching forms", error: error.message });
-  }
-});
+router.use(express.json());
 
 router.get('/education', async (req, res) => {
   try {
-    const profile = await Form.findById('6767758db6f11b9edf45975b').lean();
+    const profile = await Form.findById('676827c85a971b0e575c1fe0').lean();
     if (!profile) {
       return res.status(404).send('Profile not found');
     }
@@ -47,7 +20,7 @@ router.get('/education', async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    const profile = await Form.findById('6767758db6f11b9edf45975b').lean();
+    const profile = await Form.findById('676827c85a971b0e575c1fe0').lean();
     if (!profile) {
       return res.status(404).send('Profile not found');
     }
@@ -61,7 +34,7 @@ router.get('/', async (req, res) => {
 
 router.get('/about', async (req, res) => {
   try {
-    const profile = await Form.findById('6767758db6f11b9edf45975b').lean();
+    const profile = await Form.findById('676827c85a971b0e575c1fe0').lean();
     if (!profile) {
       return res.status(404).send('Profile not found');
     }
@@ -75,7 +48,7 @@ router.get('/about', async (req, res) => {
 
 router.get('/skills', async (req, res) => {
   try {
-    const profile = await Form.findById('6767758db6f11b9edf45975b').lean();
+    const profile = await Form.findById('676827c85a971b0e575c1fe0').lean();
     if (!profile) {
       return res.status(404).send('Profile not found');
     }
@@ -89,7 +62,7 @@ router.get('/skills', async (req, res) => {
 
 router.get('/projects', async (req, res) => {
   try {
-    const profile = await Form.findById('6767758db6f11b9edf45975b').lean();
+    const profile = await Form.findById('676827c85a971b0e575c1fe0').lean();
     if (!profile) {
       return res.status(404).send('Profile not found');
     }
@@ -103,7 +76,7 @@ router.get('/projects', async (req, res) => {
 
 router.get('/resume', async (req, res) => {
   try {
-    const profile = await Form.findById('6767758db6f11b9edf45975b').lean();
+    const profile = await Form.findById('676827c85a971b0e575c1fe0').lean();
     if (!profile) {
       return res.status(404).send('Profile not found');
     }
@@ -117,7 +90,7 @@ router.get('/resume', async (req, res) => {
 
 router.get('/experience', async (req, res) => {
   try {
-    const profile = await Form.findById('6767758db6f11b9edf45975b').lean();
+    const profile = await Form.findById('676827c85a971b0e575c1fe0').lean();
     if (!profile) {
       return res.status(404).send('Profile not found');
     }
@@ -126,6 +99,33 @@ router.get('/experience', async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).send('Server error');
+  }
+});
+
+router.post('/submit-form', async (req, res) => {
+  try {
+    const formData = req.body;
+    const newForm = new Form(formData);
+
+    await newForm.save();
+    res.status(200).json({ message: 'Form submitted successfully!' });
+  } catch (error) {
+    if (error.name === 'ValidationError') {
+      const errors = Object.values(error.errors).map(err => err.message);
+      res.status(400).json({ message: 'Validation failed', errors, body: [req.body] });
+    } else {
+      console.error(error);
+      res.status(500).json({ message: 'Server error', error: error.message });
+    }
+  }
+});
+
+router.get('/form', async (req, res) => {
+  try {
+    const forms = await Form.find();
+    res.status(200).json(forms);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching forms", error: error.message });
   }
 });
 
