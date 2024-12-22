@@ -1,23 +1,23 @@
-    <%- include('partials/header.ejs') %>
-    <!-- Home Page Section -->
-    <div class="home-container">
-        <div class="bio-container">
-            <div class="bio">
-                <h1 >Welcome to<br>Full Stack solutions<br>Where quality meets efficiency</h1>
-                <p>
-                    Hi, I’m <strong style="color: #36454F">Muniba Ali</strong>, a passionate Web Developer specializing in backend development and API design. I create scalable, high-performance APIs and server-side applications while also developing interactive UIs using React and Vue.js. With experience in Node.js and Django, I focus on building reliable and efficient systems.
-                </p>
-                <p>
-                    I’m committed to writing clean, maintainable code and using the latest technologies to deliver intuitive solutions that meet client needs and exceed expectations. Let’s turn your ideas into reality with custom web applications, API integrations, and solid backend infrastructure.
-                </p>
-            </div>
-            <div class="circle"></div>
+<%- include('partials/header.ejs') %>
+<!-- Home Page Section -->
+<div class="home-container">
+    <div class="bio-container">
+        <div class="bio">
+            <h1>Welcome to<br>Full Stack solutions<br>Where quality meets efficiency</h1>
+            <p>
+                Hi, I’m <strong style="color: #36454F"><%= profile.personalInfo.name %></strong><%= profile.personalInfo.bio %>
+            </p>
+            <p>
+                I’m committed to writing clean, maintainable code and using the latest technologies to deliver intuitive solutions that meet client needs and exceed expectations. Let’s turn your ideas into reality with custom web applications, API integrations, and solid backend infrastructure.
+            </p>
         </div>
+        <div class="circle" style="background-image: url('<%= profile.personalInfo.imagePath %>');"></div>
     </div>
-    <hr>
-    
-    <%- include('partials/footer.ejs') %>
-    
-    <script src="javascript/index.js"></script>
+</div>
+<hr>
+
+<%- include('partials/footer.ejs') %>
+
+<script src="javascript/index.js"></script>
 </body>
 </html>

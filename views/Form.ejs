@@ -1,24 +1,24 @@
 <%- include('partials/header.ejs') %>
-    <form id="resume-form" action="/api/submit-form" method="post">
+    <form id="resume-form" action="/submit-form" method="post">
         <div class="form-container">
             <!-- Personal Information -->
             <div class="form-section personal-form">
                 <h2>Personal Information</h2>
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" placeholder="Enter your name" required style="height: 30px; width: 50%;">
+                    <input type="text" id="name" name="name" placeholder="e.g., Wajdan Mustafa" required style="height: 30px; width: 50%;">
                 </div>
                 <div class="form-group">
                     <label for="fatherName">Father Name:</label>
-                    <input type="text" id="fatherName" name="fatherName" placeholder="Enter your Father name" required style="height: 30px; width: 50%;">
+                    <input type="text" id="fatherName" name="fatherName" placeholder="e.g., Muhammad Mustafa" required style="height: 30px; width: 50%;">
                 </div>
                 <div class="form-group">
                     <label for="cnic">CNIC:</label>
-                    <input type="text" id="cnic" name="cnic" placeholder="Enter your CNIC" required style="height: 30px; width: 50%;">
+                    <input type="text" id="cnic" name="cnic" placeholder="e.g., 82101-97-97820-9" required style="height: 30px; width: 50%;">
                 </div>
                 <div class="form-group">
                     <label for="nationality">Nationality:</label>
-                    <input type="text" id="nationality" name="nationality" placeholder="Enter your Nationality" required style="height: 30px; width: 50%;">
+                    <input type="text" id="nationality" name="nationality" placeholder="e.g., Pakistani" required style="height: 30px; width: 50%;">
                 </div>
                 <div class="form-group">
                     <label for="dateOfBirth">Date Of Birth:</label>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="form-group">
                     <label for="maritalStatus">Marital Status:</label>
-                    <input type="text" id="maritalStatus" name="maritalStatus" placeholder="Enter your marital status" required style="height: 30px; width: 50%;">
+                    <input type="text" id="maritalStatus" name="maritalStatus" placeholder="e.g., single, married" required style="height: 30px; width: 50%;">
                 </div>
                 <div class="form-group">
                     <label for="title">Field / Professional Title:</label>
@@ -134,7 +134,7 @@
             </div>
             <div class="form-group">
                 <label for="proficiency">Proficiency Level:</label>
-                <input type="number" id="proficiency" name="proficiency"  placeholder="Enter skill proficiency between 50 to 100" required style="height: 30px; width: 50%;">
+                <input type="number" id="proficiency" name="proficiency"  placeholder="e.g., 70" required style="height: 30px; width: 50%;">
             </div>
             <div class="form-group">
                 <label for="skillDescription">Skill Description:</label>
@@ -148,11 +148,11 @@
                 <h2>Contact Information</h2>
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" required style="height: 30px; width: 52.5%;">
+                    <input type="email" id="email" name="email" placeholder="e.g., wajdan@gmail.com" required style="height: 30px; width: 52.5%;">
                 </div>
                 <div class="form-group">
                     <label for="phone">Phone:</label>
-                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" style="height: 30px; width: 52.5%;">
+                    <input type="tel" id="phone" name="phone" placeholder="e.g., +92 3495445567" style="height: 30px; width: 52.5%;">
                 </div>
                 <div class="form-group">
                     <label for="address">Address:</label>
@@ -165,23 +165,23 @@
                 <h2>Social Media Accounts</h2>
                 <div class="form-group">
                     <label for="linkedin">Linkedin:</label>
-                    <input type="url" id="linkedin" name="linkedin" placeholder="Enter your Linkedin profile URL." style="height: 30px; width: 52.5%">
+                    <input type="url" id="linkedin" name="linkedin" placeholder="e.g., https://www.linkedin/in.com/" style="height: 30px; width: 52.5%">
                 </div>
                 <div class="form-group">
                     <label for="github">Git Hub:</label>
-                    <input type="url" id="github" name="github" placeholder="Enter your Github profile URL." style="height: 30px; width: 52.5%">
+                    <input type="url" id="github" name="github" placeholder="e.g., https://www.github.com/" style="height: 30px; width: 52.5%">
                 </div>
                 <div class="form-group">
                     <label for="youtube">You Tube:</label>
-                    <input type="url" id="youtube" name="youtube" placeholder="Enter your youtube channel URL." style="height: 30px; width: 52.5%">
+                    <input type="url" id="youtube" name="youtube" placeholder="e.g., https://www.youtube.com/" style="height: 30px; width: 52.5%">
                 </div>
                 <div class="form-group">
                     <label for="twitter">Twitter:</label>
-                    <input type="url" id="twitter" name="twitter" placeholder="Enter your twitter account URL." style="height: 30px; width: 52.5%">
+                    <input type="url" id="twitter" name="twitter" placeholder="e.g., https://www.twitter.com/" style="height: 30px; width: 52.5%">
                 </div>
                 <div class="form-group">
                     <label for="instagram">Instagram:</label>
-                    <input type="url" id="instagram" name="instagram" placeholder="Enter your instagram account URL." style="height: 30px; width: 52.5%">
+                    <input type="url" id="instagram" name="instagram" placeholder="e.g., https://www.instagram.com/" style="height: 30px; width: 52.5%">
                 </div>
             </div>
 

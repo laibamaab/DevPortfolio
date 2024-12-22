@@ -7,60 +7,39 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/api', routes);
+app.use('/', routes);
 
 database();
-app.get('/', (request, response) =>{
-    response.render('home');
-});
 
-app.get('/about', (request, response) =>{
-    response.render('about');
-});
-app.get('/education', (request, response) =>{
-    response.render('education');
-});
-
-app.get('/experience', (request, response) =>{
-    response.render('education');
-});
-
-app.get('/skills', (request, response) =>{
-    response.render('skills');
-});
-
-app.get('/resume', (request, response) =>{
-    response.render('resume');
-});
-
-app.get('/projects', (request, response) =>{
-    response.render('projects');
-});
-
-app.get('/form', (request, response) =>{
+app.get('/user-form', (request, response) =>{
     response.render('Form');
 });
 
-app.get('/update-form', (request, response) =>{
+app.get('/portfolio-form', (request, response) =>{
     response.render('updateForm');
 });
 
-app.get('/login', (request, response) =>{
+app.get('/user-login', (request, response) =>{
     response.render('Login');
 });
 
-app.get('/signup', (request, response) =>{
+app.get('/user-signup', (request, response) =>{
     response.render('signup');
 });
 
-app.get('/forget-password', (request, response) =>{
+app.get('/user-forget-password', (request, response) =>{
     response.render('Forgetpassword');
 });
 
-app.get('/delete-account', (request, response) =>{
+app.get('/user-delete-account', (request, response) =>{
     response.render('delete_account');
 });
 
+
+app.use((req, res) => {
+    res.status(404).send('Page not found');
+  });
+  
 app.listen(7998, ()=>{
     console.log('http://127.0.0.1:7998');
 });

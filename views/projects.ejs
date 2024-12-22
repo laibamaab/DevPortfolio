@@ -1,89 +1,27 @@
-    <%- include('partials/header.ejs') %>
-    
-    <!--Projects Section-->
-    <div class="project-container" id="projects">
-        <h1>My projects</h1>
-        <div class="project-grid">
+<%- include('partials/header.ejs') %>
+
+<!-- Projects Section -->
+<div class="project-container" id="projects">
+    <h1>My projects</h1>
+    <div class="project-grid">
+        <% profile.projects.forEach(project => { %>
             <div class="project-section">
-                <img src="images/photogallery.jpg" alt="Photo Gallery">
-                <a href="https://templatemo.com/tm-434-masonry" target="_blank"><h4>Photo Gallery Website</h4></a>
+                <img src="<%= project.projectImage %>" alt="<%= project.projectName %>">
+                <a href="<%= project.projectLink %>" target="_blank"><h4><%= project.projectName%></h4></a>
                 <p style="font-size: .9rem;">
-                    A platform for viewing and organizing images.
+                    <%= project.projectName %>
                     <span class="hidden" id="extra-text">
-                        Users can filter and categorize high-quality images with stunning carousel displays.
-                        Optimized for performance and aesthetics.
+                        <%= project.projectSummary %>
                     </span>
                     <span class="read-more" id="read-more">Read More</span>
                 </p>
             </div>
-            
-            <div class="project-section">
-                <img src="images/ecommerce.jpg" alt="E-Commerce Store">
-                <a href="https://www.behance.net/gallery/132824115/SHADXW-techwear-e-commerce-redesign-concept?locale=zh_CN" target="_blank"><h4>E-Commerce Platform</h4></a>
-                <p style="font-size: .9rem;">
-                    Designed a fully functional online store.
-                    <span class="hidden" id="extra-text">
-                        Features include product filtering, secure checkout with Stripe integration, and an admin dashboard.
-                        Seamless user experience on all devices.
-                    </span>
-                    <span class="read-more" id="read-more">Read More</span>
-                </p>
-            </div>
-            
-            <div class="project-section">
-                <img src="images/task.png" alt="Task Management App">
-                <a href="https://dribbble.com/shots/18381335-Project-Management-Dashboard-Project-Timeline-Dark-Mode?utm_source=Clipboard_Shot&utm_campaign=ema_ike&utm_content=Project%20Management%20Dashboard%20%E2%80%94%20Project%20Timeline%20Dark%20Mode&utm_medium=Social_Share&utm_source=Clipboard_Shot&utm_campaign=ema_ike&utm_content=Project%20Management%20Dashboard%20%E2%80%94%20Project%20Timeline%20Dark%20Mode&utm_medium=Social_Share" target="_blank"><h4>Task Management App</h4></a>
-                <p style="font-size: .9rem;">
-                    Simplify task organization with real-time collaboration.
-                    <span class="hidden" id="extra-text">
-                        Includes drag-and-drop functionality, user notifications, and role-based access control for teams.
-                    </span>
-                    <span class="read-more" id="read-more">Read More</span>
-                </p>
-            </div>
-            
-            <div class="project-section">
-                <img src="images/blog.png" alt="Blog CMS">
-                <a href="https://dribbble.com/shots/15483648-Blog-App-Concept?utm_source=Clipboard_Shot&utm_campaign=Conceptzilla&utm_content=Blog%20App%20Concept&utm_medium=Social_Share&utm_source=Clipboard_Shot&utm_campaign=Conceptzilla&utm_content=Blog%20App%20Concept&utm_medium=Social_Share" target="_blank"><h4>Blog Management System</h4></a>
-                <p style="font-size: .9rem;">
-                    A platform for creating and managing blogs with SEO-friendly features.
-                    <span class="hidden" id="extra-text">
-                        Rich text editor, user commenting system, and social media integration to boost engagement.
-                    </span>
-                    <span class="read-more" id="read-more">Read More</span>
-                </p>
-            </div>
-            
-            <div class="project-section">
-                <img src="images/weather.jpg" alt="Weather App">
-                <a href="https://dribbble.com/shots/20288381-Weather-Forecasting-Web-App-UI?utm_source=Clipboard_Shot&utm_campaign=awsmd&utm_content=Weather%20Forecasting%20Web%20App%20UI&utm_medium=Social_Share&utm_source=Clipboard_Shot&utm_campaign=awsmd&utm_content=Weather%20Forecasting%20Web%20App%20UI&utm_medium=Social_Share" target="_blank"><h4>Weather Forecast App</h4></a>
-                <p style="font-size: .9rem;">
-                    Real-time weather updates based on location.
-                    <span class="hidden" id="extra-text">
-                        Includes interactive design, location-based themes, and a weekly forecast with advanced metrics.
-                    </span>
-                    <span class="read-more" id="read-more">Read More</span>
-                </p>
-            </div>
-            
-            <div class="project-section">
-                <img src="images/events3.jpg" alt="my project">
-                <a href="https://es.pinterest.com/pin/999517711083661821/" target="_blank"><h4>Event Booking Website</h4></a>
-                <p style="font-size: .9rem;">
-                    Develop a website where users can browse 
-                    <span class="hidden" id="extra-text">
-                        and book their slots for events like weddings, conferences, or corporate. Implemented features like event
-                        galleries, slots booking, and calendar integration.
-                        Graphics involved: Event flyers, venue images, slot booking interface, event gallery!
-                    </span>
-                    <span class="read-more" id="read-more">Read More</span>
-                </p>
-            </div>
-        </div>
+        <% }) %>
     </div>
-    
-    <hr style="margin-top: 80px;"> 
-    <%- include('partials/footer.ejs') %>
-    <script src="javascript/index.js"></script>
+</div>
+
+<hr style="margin-top: 80px;">
+<%- include('partials/footer.ejs') %>
+<script src="/javascript/index.js"></script>
 </body>
 </html>

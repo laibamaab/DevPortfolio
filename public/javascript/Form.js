@@ -162,58 +162,59 @@ document.addEventListener('DOMContentLoaded', () => {
             createNotification('You must be logged in to submit the form.');
             return;
         }
+        const formData = {
+            userId, 
+            personalInfo: {
+                name: document.getElementById('name').value.trim(),
+                fatherName: document.getElementById('fatherName').value.trim(),
+                cnic: document.getElementById('cnic').value.trim(),
+                nationality: document.getElementById('nationality').value.trim(),
+                dateOfBirth: document.getElementById('dateOfBirth').value.trim(),
+                maritalStatus: document.getElementById('maritalStatus').value.trim(),
+                fieldTitle: document.getElementById('title').value.trim(),
+                gender: document.getElementById('gender').value.trim(),
+                imagePath: document.getElementById('image').files[0]?.name || '', 
+                bio: document.getElementById('bio').value.trim()
+            },
+            education: [{
+                degree: document.getElementById('degree').value.trim(),
+                institution: document.getElementById('institution').value.trim(),
+                city: document.getElementById('city').value.trim(),
+                graduation: document.getElementById('graduation').value.trim()
+            }],
+            workExperience: [{
+                jobTitle: document.getElementById('job-title').value.trim(),
+                company: document.getElementById('company').value.trim(),
+                startDate: document.getElementById('start-date').value.trim(),
+                endDate: document.getElementById('end-date').value.trim(),
+                jobDescription: document.getElementById('job-description').value.trim()
+            }],
+            projects: [{
+                projectName: document.getElementById('project-name').value.trim(),
+                projectSummary: document.getElementById('project-description').value.trim(),
+                projectImage: document.getElementById('projectImage').files[0]?.name || '',
+                projectLink: document.getElementById('project-link').value.trim()
+            }],
+            skills: [{
+                skillName: document.getElementById('skills').value.trim(),
+                skillSummary: document.getElementById('skillDescription').value.trim(),
+                skillImage: document.getElementById('skillImage').files[0]?.name || '',
+                level: parseInt(document.getElementById('proficiency').value.trim(), 10) || 50
+            }],
+            contactInfo: {
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                address: document.getElementById('address').value.trim()
+            },
+            socialMedia: {
+                linkedin: document.getElementById('linkedin').value.trim(),
+                github: document.getElementById('github').value.trim(),
+                youtube: document.getElementById('youtube').value.trim(),
+                twitter: document.getElementById('twitter').value.trim(),
+                instagram: document.getElementById('instagram').value.trim()
+            }
+        };
         
-            const formData = {
-                personalInfo: {
-                    name: document.getElementById('name').value,
-                    fatherName: document.getElementById('fatherName').value,
-                    cnic: document.getElementById('cnic').value,
-                    nationality: document.getElementById('nationality').value,
-                    dateOfBirth: document.getElementById('dateOfBirth').value,
-                    maritalStatus: document.getElementById('maritalStatus').value,
-                    fieldTitle: document.getElementById('title').value,
-                    gender: document.getElementById('gender').value,
-                    imagePath: document.getElementById('image').files[0]?.name,  // Assuming image is uploaded as a file
-                    bio: document.getElementById('bio').value
-                },
-                education: [{
-                    degree: document.getElementById('degree').value,
-                    institution: document.getElementById('institution').value,
-                    city: document.getElementById('city').value,
-                    graduation: document.getElementById('graduation').value
-                }],
-                workExperience: [{
-                    jobTitle: document.getElementById('job-title').value,
-                    company: document.getElementById('company').value,
-                    startDate: document.getElementById('start-date').value,
-                    endDate: document.getElementById('end-date').value,
-                    jobDescription: document.getElementById('job-description').value
-                }],
-                projects: [{
-                    projectName: document.getElementById('project-name').value,
-                    projectDescription: document.getElementById('project-description').value,
-                    projectImage: document.getElementById('projectImage').files[0]?.name, // Assuming project image is uploaded as a file
-                    projectLink: document.getElementById('project-link').value
-                }],
-                skills: [{
-                    skill: document.getElementById('skills').value.split(','),
-                    skillImage: document.getElementById('skillImage').files[0]?.name, // Assuming skill image is uploaded as a file
-                    proficiency: document.getElementById('proficiency').value,
-                    skillDescription: document.getElementById('skillDescription').value
-                }],
-                contactInfo: {
-                    email: document.getElementById('email').value,
-                    phone: document.getElementById('phone').value,
-                    address: document.getElementById('address').value
-                },
-                socialMedia: {
-                    linkedin: document.getElementById('linkedin').value,
-                    github: document.getElementById('github').value,
-                    youtube: document.getElementById('youtube').value,
-                    twitter: document.getElementById('twitter').value,
-                    instagram: document.getElementById('instagram').value
-                }
-            };
     
         try {
             const response = await fetch(apiEndpoint, {
@@ -240,7 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const form = document.getElementById('resume-form');
         if (form) {
             form.addEventListener('submit', (e) => {
-                handleFormSubmission(e, '/api/submit-form', 'POST');
+                handleFormSubmission(e, '/submit-form', 'POST');
             });
         } else {
             console.log('Form with ID "resume-form" not found');
@@ -251,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const form = document.getElementById('resume-update-form');
         if (form) {
             form.addEventListener('submit', (e) => {
-                handleFormSubmission(e, '/api/update-form', 'PUT');
+                handleFormSubmission(e, '/update-form', 'PUT');
             });
         } else {
             console.log('Form with ID "resume-update-form" not found');

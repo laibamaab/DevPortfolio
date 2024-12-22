@@ -5,15 +5,20 @@ const User = require('../models/userSchema');
 
 router.post('/submit-form', async (req, res) => {
   try {
-      const formData = req.body;
+    const formData = req.body;
 
-      const newForm = new Form(formData);
+    const newForm = new Form(formData);
 
-      await newForm.save();
-      res.status(200).json({ message: 'Form submitted successfully!' });
+    await newForm.save();
+    res.status(200).json({ message: 'Form submitted successfully!' });
   } catch (error) {
+    if (error.name === 'ValidationError') {
+      const errors = Object.values(error.errors).map(err => err.message);
+      res.status(400).json({ message: 'Validation failed', errors });
+    } else {
       console.error(error);
-      res.status(500).json({ message: 'Error submitting the form', error: error.message });
+      res.status(500).json({ message: 'Server error', error: error.message });
+    }
   }
 });
 
@@ -26,15 +31,101 @@ router.get('/form', async (req, res) => {
   }
 });
 
-router.get('/form/:id', async (req, res) => {
+router.get('/education', async (req, res) => {
   try {
-    const form = await Form.findById(req.params.id);
-    if (!form) {
-      return res.status(404).json({ message: "Form not found" });
+    const profile = await Form.findById('6767758db6f11b9edf45975b').lean();
+    if (!profile) {
+      return res.status(404).send('Profile not found');
     }
-    res.status(200).json(form);
+
+    res.render('education', { profile });
   } catch (error) {
-    res.status(500).json({ message: "Error fetching form", error: error.message });
+    console.error(error);
+    res.status(500).send('Server error');
+  }
+});
+
+router.get('/', async (req, res) => {
+  try {
+    const profile = await Form.findById('6767758db6f11b9edf45975b').lean();
+    if (!profile) {
+      return res.status(404).send('Profile not found');
+    }
+
+    res.render('home', { profile });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server error');
+  }
+});
+
+router.get('/about', async (req, res) => {
+  try {
+    const profile = await Form.findById('6767758db6f11b9edf45975b').lean();
+    if (!profile) {
+      return res.status(404).send('Profile not found');
+    }
+
+    res.render('about', { profile });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server error');
+  }
+});
+
+router.get('/skills', async (req, res) => {
+  try {
+    const profile = await Form.findById('6767758db6f11b9edf45975b').lean();
+    if (!profile) {
+      return res.status(404).send('Profile not found');
+    }
+
+    res.render('skills', { profile });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server error');
+  }
+});
+
+router.get('/projects', async (req, res) => {
+  try {
+    const profile = await Form.findById('6767758db6f11b9edf45975b').lean();
+    if (!profile) {
+      return res.status(404).send('Profile not found');
+    }
+
+    res.render('projects', { profile });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server error');
+  }
+});
+
+router.get('/resume', async (req, res) => {
+  try {
+    const profile = await Form.findById('6767758db6f11b9edf45975b').lean();
+    if (!profile) {
+      return res.status(404).send('Profile not found');
+    }
+
+    res.render('resume', { profile });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server error');
+  }
+});
+
+router.get('/experience', async (req, res) => {
+  try {
+    const profile = await Form.findById('6767758db6f11b9edf45975b').lean();
+    if (!profile) {
+      return res.status(404).send('Profile not found');
+    }
+
+    res.render('education', { profile });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server error');
   }
 });
 
@@ -102,6 +193,18 @@ router.post('/login', async (req, res) => {
 router.get('/user/:id', async (req, res) => {
   try {
     const user = await User.findById(req.params.id).select('-password -securityAnswer');
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: "Error retrieving user", error: error.message });
+  }
+});
+
+router.get('/users', async (req, res) => {
+  try {
+    const user = await User.find();
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }

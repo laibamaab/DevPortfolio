@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const password = document.getElementById('loginPassword').value;
 
             try {
-                const result = await makeApiRequest('/api/login', 'POST', { email, password });
+                const result = await makeApiRequest('/login', 'POST', { email, password });
                 createNotification(result.message);
                 localStorage.setItem('userId', result.userId);
                 window.location.href = '/';
@@ -81,14 +81,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             try {
-                const result = await makeApiRequest('/api/signup', 'POST', {
+                const result = await makeApiRequest('/signup', 'POST', {
                     email,
                     password,
                     securityQuestion,
                     securityAnswer,
                 });
                 createNotification(result.message);
-                window.location.href = '/login';
+                window.location.href = '/user-login';
             } catch (error) {
                 createNotification('Signup failed: ' + error.message);
             }
@@ -104,9 +104,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const password = document.getElementById('deletePassword').value;
 
             try {
-                const result = await makeApiRequest('/api/delete', 'DELETE', { email, password });
+                const result = await makeApiRequest(`/delete/${email}`, 'DELETE', { email, password });
                 createNotification('User deleted successfully');
-                window.location.href = '/signup';
+                window.location.href = '/user-signup';
             } catch (error) {
                 createNotification('Deletion failed: ' + error.message);
             }
@@ -124,14 +124,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const newPassword = document.getElementById('newPassword').value;
 
             try {
-                const result = await makeApiRequest('/api/forget', 'PUT', {
+                const result = await makeApiRequest(`/forget/${email}`, 'PUT', {
                     email,
                     securityQuestion,
                     securityAnswer,
                     newPassword,
                 });
                 createNotification('Password reset successful!');
-                window.location.href = '/login';
+                window.location.href = '/user-login';
             } catch (error) {
                 createNotification('Password reset failed: ' + error.message);
             }
@@ -140,10 +140,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Navigation Handlers
     const navigationLinks = {
-        showForgotPassword: '/forget-password',
-        showLoginFromForgot: '/login',
-        showLogin: '/login',
-        showSignup: '/signup',
+        showForgotPassword: '/user-forget-password',
+        showLoginFromForgot: '/user-login',
+        showLogin: '/user-login',
+        showSignup: '/user-signup',
     };
 
     Object.entries(navigationLinks).forEach(([id, href]) => {

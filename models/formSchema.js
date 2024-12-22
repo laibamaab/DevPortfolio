@@ -46,12 +46,12 @@ projects: [
 ],
 skills: [
   {
-    skillName: { type: String, maxlength: 30 },
-    skillSummary: { type: String, maxlength: 200 },    
-    skillImage: {type: String},
-    level: {type: Number, max: 100, min: 50},
+    skillName: { type: String, required: true },
+    skillSummary: { type: String, maxlength: 200 },
+    skillImage: { type: String },
+    level: { type: Number, required: true, min: 50, max: 100 }
   }
-], 
+],
 contactInfo: {
   email: { type: String, required: true, match: /.+\@.+\..+/ }, 
   phone: { type: String },

@@ -1,85 +1,30 @@
-    <%- include('partials/header.ejs') %>
+<%- include('partials/header.ejs') %>
 
-        <!--Skills Section-->
-        <div class="skill-container" id="skills">
-            <h1>SKILLS</h1>
-            <div class="skills-grid">
-                <div class="skill-section">
-                    <img src="images/python.png" alt="python">
-                    <div class="skills-perc">
-                        <div class="skill-circle1">
-                            <h4>90%</h4>
-                        </div>
-                        <div class="skill-circle2"></div>
+<!--Skills Section-->
+<div class="skill-container" id="skills">
+    <h1>SKILLS</h1>
+    <div class="skills-grid">
+        <% profile.skills.forEach(skill => { %>
+            <div class="skill-section">
+                <img src="<%= skill.skillImage %>" alt="<%= skill.skillName %>">
+                <div class="skills-perc">
+                    <div class="skill-circle1">
+                        <h4><%= skill.level %>%</h4>
                     </div>
-                    <h3>Python for Web Development </h3>
-                    <p>
-                        <b>Summary:</b> Experienced in using Python with frameworks like Django and Flask to build robust, scalable web applications.
-                        I leverage Python’s simplicity and versatility for back-end development and server-side scripting.
-                    </p>
+                    <div class="skill-circle2"></div>
                 </div>
-                <div class="skill-section">
-                    <img src="images/bootstrap.png" alt="bootstrap">
-                    <div class="skills-perc">
-                        <div class="skill-circle1">
-                            <h4>85%</h4>
-                        </div>
-                        <div class="skill-circle2"></div>
-                    </div>
-                    <h3>Responsive Web Design</h3>
-                    <p>
-                        <b>Summary: </b>Skilled in creating responsive, mobile-first designs using media queries and frameworks
-                        like Bootstrap to ensure websites look great on any device.
-                    </p>
-                </div>
-                <div class="skill-section">
-                    <img src="images/react.png" alt="react">
-                    <div class="skills-perc">
-                        <div class="skill-circle1">
-                            <h4>81%</h4>
-                        </div>
-                        <div class="skill-circle2"></div>
-                    </div>
-                    <h3>React JS Framework</h3>
-                    <p>
-                        <b>Summary: </b>Experienced in using modern JavaScript frameworks like React to build dynamic, high-performance
-                        web applications that are easy to maintain and scale.
-                    </p>
-                </div>
-                <div class="skill-section" style="margin-left: 59%; margin-top: -50px;">
-                    <img src="images/git.png" alt="git">
-                    <div class="skills-perc">
-                        <div class="skill-circle1">
-                            <h4>84%</h4>
-                        </div>
-                        <div class="skill-circle2"></div>
-                    </div>
-                    <h3>Version Control (Git & GitHub)</h3>
-                    <p>
-                        <b>Summary: </b>Proficient in using Git and GitHub to manage code, collaborate with teams,
-                        and maintain version history, ensuring smooth project workflows.
-                    </p>
-                </div>
-                <div class="skill-section" style="margin-left: 55%; margin-top: -50px;">
-                    <img src="images/node.png" alt="node js">
-                    <div class="skills-perc">
-                        <div class="skill-circle1">
-                            <h4>70%</h4>
-                        </div>
-                        <div class="skill-circle2"></div>
-                    </div>
-                    <h3>Basic Back-End Development</h3>
-                    <p>
-                        <b>Summary: </b> Knowledgeable in back-end technologies like Node.js, with experience in
-                        integrating APIs and handling server-side logic to complement front-end applications.
-                    </p>
-                </div>
+                <h3><%= skill.skillName %></h3>
+                <p>
+                    <b>Summary:</b> <%= skill.skillSummary %>
+                </p>
             </div>
-        </div>
-        <hr style="margin-top: 80px;">
-    
-        <%- include('partials/footer.ejs') %>
-        
-    <script src="javascript/index.js"></script>
+        <% }) %>
+    </div>
+</div>
+<hr style="margin-top: 80px;">
+
+<%- include('partials/footer.ejs') %>
+
+<script src="javascript/index.js"></script>
 </body>
 </html>
