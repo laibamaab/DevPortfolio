@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/Login.css">
+    <title>DevPortfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Lobster&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lobster&family=Oswald:wght@200..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Lobster&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <title>DevPortfolio</title>
+    <link rel="website icon" type="png" href="/images/logo.png">
+</head>
+<body>
+
+    <div class="container">
+        <div class="half-container"></div>
+        <div class="text-container" >
+            <h2 style="margin-left: 0px; margin-bottom: -20px  ">We're Sorry to  </h2>
+            <h2 >See You Go!</h2>
+            <h4>You’ll always be   <br>welcome back if you  <br>ever decide to return. </h4>
+        </div>
+        <h2 id="formTitle" style="margin-left: 30px;">Delete Account</h2>
+        <div id="errorMessage" class="error"></div>
+
+        <div id="deleteSection" class="form-section">
+            <form id="deleteForm" method="delete">
+                <div class="input-container">
+                <label id="email">Email Address:</label>
+                <div>
+                    <i class="fa icons">&#xf0e0;</i>
+                    <input type="email" id="deleteEmail" required>
+                </div>
+
+                <label id="password" style="margin-top: 10px;">Password:</label>
+                <div>
+                    <i class="fa icons">&#xf023;</i>
+                    <input type="password" id="deletePassword" required>
+                </div>
+                </div>
+                <button type="submit">Delete</button>
+            </form>
+            <div class="inline-button">
+            <h5 style="display: inline;">Want to go back to login? </h5>
+            <a id="showLogin" href="/user-login">Login</a>
+            <a id="showForgotPassword" style="display: block; margin-top: 5px;" href="/user-forget">Forgot Password?</a>
+            </div>
+        </div>
+    </div>
+    <script src="/javascript/Form.js"></script>
+</body>
+</html>

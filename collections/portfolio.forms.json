@@ -1,0 +1,524 @@
+[{
+  "_id": {
+    "$oid": "6768245a5a971b0e575c1f95"
+  },
+  "user": {
+    "userEmail": "ayesha@gmail.com",
+    "password": "12345678",
+    "_id": {
+      "$oid": "6768245a5a971b0e575c1f96"
+    }
+  },
+  "personalInfo": {
+    "name": "Ayesha Khan",
+    "fatherName": "Khan Ahmed",
+    "dateOfBirth": {
+      "$date": "1994-05-15T00:00:00.000Z"
+    },
+    "nationality": "Pakistani",
+    "cnic": 3456781234567,
+    "maritalStatus": "Single",
+    "fieldTitle": "Frontend Developer",
+    "gender": "female",
+    "imagePath": "/images/profile.jpg",
+    "bio": "a skilled Frontend Developer with expertise in creating responsive, user-friendly websites. I enjoy turning creative ideas into functional designs with a focus on performance and accessibility.",
+    "_id": {
+      "$oid": "6768245a5a971b0e575c1f97"
+    }
+  },
+  "workExperience": [
+    {
+      "jobTitle": "UI Designer",
+      "company": "CodeCrafter",
+      "startDate": {
+        "$date": "2017-04-01T00:00:00.000Z"
+      },
+      "endDate": "2019-01-15",
+      "jobDescription": "Created visually appealing designs for web applications. Collaborated with developers to implement designs effectively.",
+      "_id": {
+        "$oid": "6768245a5a971b0e575c1f98"
+      }
+    },
+    {
+      "jobTitle": "Frontend Developer",
+      "company": "BrightSoft",
+      "startDate": {
+        "$date": "2019-02-01T00:00:00.000Z"
+      },
+      "endDate": "2020-12-01",
+      "jobDescription": "Developed responsive web pages using React and TypeScript. Focused on accessibility and cross-browser compatibility.",
+      "_id": {
+        "$oid": "6768245a5a971b0e575c1f99"
+      }
+    },
+    {
+      "jobTitle": "Web Engineer",
+      "company": "Tech Titans",
+      "startDate": {
+        "$date": "2021-03-01T00:00:00.000Z"
+      },
+      "endDate": "2022-09-01",
+      "jobDescription": "Built high-performance, scalable websites using modern web technologies. Worked closely with backend teams for seamless integration.",
+      "_id": {
+        "$oid": "6768245a5a971b0e575c1f9a"
+      }
+    },
+    {
+      "jobTitle": "Frontend Lead",
+      "company": "Innovative Softwares",
+      "startDate": {
+        "$date": "2022-10-01T00:00:00.000Z"
+      },
+      "endDate": "Present",
+      "jobDescription": "Leading a team of developers to deliver exceptional UI experiences. Implementing design systems for efficient workflows.",
+      "_id": {
+        "$oid": "6768245a5a971b0e575c1f9b"
+      }
+    }
+  ],
+  "skills": [
+    {
+      "skillName": "HTML & CSS",
+      "skillSummary": "Expertise in writing semantic HTML and modern CSS for building stunning web pages.",
+      "skillImage": "/images/bootstrap.png",
+      "level": 95,
+      "_id": {
+        "$oid": "6768245a5a971b0e575c1f9c"
+      }
+    },
+    {
+      "skillName": "JavaScript (ES6+)",
+      "skillSummary": "Proficient in modern JavaScript techniques for interactive web development.",
+      "skillImage": "/images/python.png",
+      "level": 90,
+      "_id": {
+        "$oid": "6768245a5a971b0e575c1f9d"
+      }
+    },
+    {
+      "skillName": "React Framework",
+      "skillSummary": "Specialized in building dynamic web apps using React and its ecosystem.",
+      "skillImage": "/images/react.png",
+      "level": 88,
+      "_id": {
+        "$oid": "6768245a5a971b0e575c1f9e"
+      }
+    },
+    {
+      "skillName": "UI/UX Design",
+      "skillSummary": "Skilled in crafting intuitive user interfaces with a focus on user experience.",
+      "skillImage": "/images/node.png",
+      "level": 85,
+      "_id": {
+        "$oid": "6768245a5a971b0e575c1f9f"
+      }
+    },
+    {
+      "skillName": "Version Control",
+      "skillSummary": "Experienced in managing code repositories and version control using Git and GitHub.",
+      "skillImage": "/images/git.png",
+      "level": 80,
+      "_id": {
+        "$oid": "6768245a5a971b0e575c1fa0"
+      }
+    }
+  ],
+  "contactInfo": {
+    "email": "ayesha.khan@example.com",
+    "phone": "987-654-3210",
+    "_id": {
+      "$oid": "6768245a5a971b0e575c1fa1"
+    }
+  },
+  "socialMedia": {
+    "linkedin": "https://linkedin.com/in/ayeshakhan",
+    "github": "https://github.com/ayesha",
+    "_id": {
+      "$oid": "6768245a5a971b0e575c1fa2"
+    }
+  },
+  "education": [],
+  "projects": [],
+  "createdAt": {
+    "$date": "2024-12-22T14:38:18.188Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6768269e5a971b0e575c1fa4"
+  },
+  "user": {
+    "userEmail": "ali@gmail.com",
+    "password": "12345678",
+    "_id": {
+      "$oid": "6768269e5a971b0e575c1fa5"
+    }
+  },
+  "personalInfo": {
+    "name": "Ali Raza",
+    "fatherName": "Raza Ahmed",
+    "dateOfBirth": {
+      "$date": "1993-10-12T00:00:00.000Z"
+    },
+    "nationality": "Pakistani",
+    "cnic": 3214569873214,
+    "maritalStatus": "Married",
+    "fieldTitle": "Full Stack Developer",
+    "gender": "male",
+    "imagePath": "/images/profile.png",
+    "bio": "a Full Stack Developer with a knack for delivering end-to-end web solutions. From building robust backends to crafting engaging user interfaces, I strive to create applications that make an impact.",
+    "_id": {
+      "$oid": "6768269e5a971b0e575c1fa6"
+    }
+  },
+  "workExperience": [
+    {
+      "jobTitle": "Junior Developer",
+      "company": "BlueTech",
+      "startDate": {
+        "$date": "2014-02-01T00:00:00.000Z"
+      },
+      "endDate": "2016-08-15",
+      "jobDescription": "Worked on developing internal tools and assisting senior developers in building web applications.",
+      "_id": {
+        "$oid": "6768269e5a971b0e575c1fa7"
+      }
+    },
+    {
+      "jobTitle": "Web Developer",
+      "company": "TechNext",
+      "startDate": {
+        "$date": "2017-01-10T00:00:00.000Z"
+      },
+      "endDate": "2019-05-30",
+      "jobDescription": "Designed and implemented full-stack web solutions, focusing on database optimization and API integration.",
+      "_id": {
+        "$oid": "6768269e5a971b0e575c1fa8"
+      }
+    },
+    {
+      "jobTitle": "Full Stack Developer",
+      "company": "CodeWorks",
+      "startDate": {
+        "$date": "2020-01-01T00:00:00.000Z"
+      },
+      "endDate": "2021-12-31",
+      "jobDescription": "Built scalable, feature-rich applications using React and Node.js. Enhanced system performance by optimizing backend processes.",
+      "_id": {
+        "$oid": "6768269e5a971b0e575c1fa9"
+      }
+    },
+    {
+      "jobTitle": "Team Lead",
+      "company": "DevSynergy",
+      "startDate": {
+        "$date": "2022-01-01T00:00:00.000Z"
+      },
+      "endDate": "Present",
+      "jobDescription": "Leading a team of developers to deliver client-focused web applications. Managing code reviews, deployments, and troubleshooting issues.",
+      "_id": {
+        "$oid": "6768269e5a971b0e575c1faa"
+      }
+    }
+  ],
+  "skills": [
+    {
+      "skillName": "JavaScript Frameworks",
+      "skillSummary": "Proficient in frameworks like React, Angular, and Vue for dynamic web development.",
+      "skillImage": "/images/python.png",
+      "level": 92,
+      "_id": {
+        "$oid": "6768269e5a971b0e575c1fab"
+      }
+    },
+    {
+      "skillName": "Backend Development",
+      "skillSummary": "Extensive experience with Node.js and Django for building scalable server-side applications.",
+      "skillImage": "/images/node.png",
+      "level": 85,
+      "_id": {
+        "$oid": "6768269e5a971b0e575c1fac"
+      }
+    },
+    {
+      "skillName": "Database Management",
+      "skillSummary": "Skilled in MySQL, PostgreSQL, and MongoDB for efficient data storage solutions.",
+      "skillImage": "/images/git.png",
+      "level": 88,
+      "_id": {
+        "$oid": "6768269e5a971b0e575c1fad"
+      }
+    },
+    {
+      "skillName": "API Development",
+      "skillSummary": "Expert in designing and implementing RESTful and GraphQL APIs for various applications.",
+      "skillImage": "/images/bootstrap.png",
+      "level": 90,
+      "_id": {
+        "$oid": "6768269e5a971b0e575c1fae"
+      }
+    },
+    {
+      "skillName": "DevOps & CI/CD",
+      "skillSummary": "Knowledgeable in implementing CI/CD pipelines using tools like Jenkins, Docker, and Kubernetes.",
+      "skillImage": "/images/react.png",
+      "level": 80,
+      "_id": {
+        "$oid": "6768269e5a971b0e575c1faf"
+      }
+    }
+  ],
+  "contactInfo": {
+    "email": "ali.raza@example.com",
+    "phone": "345-678-9012",
+    "address": "DHA Phase 6, Karachi",
+    "_id": {
+      "$oid": "6768269e5a971b0e575c1fb0"
+    }
+  },
+  "socialMedia": {
+    "linkedin": "https://linkedin.com/in/aliraza",
+    "github": "https://github.com/aliraza",
+    "youtube": "https://youtube.com/aliraza",
+    "instagram": "https://instagram.com/aliraza",
+    "twitter": "https://twitter.com/aliraza",
+    "_id": {
+      "$oid": "6768269e5a971b0e575c1fb1"
+    }
+  },
+  "education": [],
+  "projects": [],
+  "createdAt": {
+    "$date": "2024-12-22T14:47:58.472Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "676827c85a971b0e575c1fe0"
+  },
+  "user": {
+    "userEmail": "wajdan@gmail.com",
+    "password": "12345678",
+    "_id": {
+      "$oid": "676827c85a971b0e575c1fe1"
+    }
+  },
+  "personalInfo": {
+    "name": "Wajdan",
+    "fatherName": "Mustafa",
+    "dateOfBirth": {
+      "$date": "1995-04-20T00:00:00.000Z"
+    },
+    "nationality": "Pakistani",
+    "cnic": 3345679181790,
+    "maritalStatus": "Married",
+    "fieldTitle": "Software Engineer",
+    "gender": "male",
+    "imagePath": "/images/profile.png",
+    "bio": "a passionate Web Developer specializing in backend development and API design. I create scalable, high-performance APIs and server-side applications while also developing interactive UIs using React and Vue.js.",
+    "_id": {
+      "$oid": "676827c85a971b0e575c1fe2"
+    }
+  },
+  "education": [
+    {
+      "degree": "BSc Computer Science",
+      "institution": "International Islamic University",
+      "city": "Islamabad",
+      "graduation": {
+        "$date": "2014-06-01T00:00:00.000Z"
+      },
+      "_id": {
+        "$oid": "676827c85a971b0e575c1fe3"
+      }
+    },
+    {
+      "degree": "MSc Software Engineering",
+      "institution": "MIT University",
+      "city": "Los Angeles",
+      "graduation": {
+        "$date": "2021-06-01T00:00:00.000Z"
+      },
+      "_id": {
+        "$oid": "676827c85a971b0e575c1fe4"
+      }
+    }
+  ],
+  "workExperience": [
+    {
+      "jobTitle": "Frontend Developer",
+      "company": "Tech Solutions",
+      "startDate": {
+        "$date": "2018-03-01T00:00:00.000Z"
+      },
+      "endDate": "2018-11-06",
+      "jobDescription": "Implemented responsive web interfaces using HTML, CSS, and JS. Collaborated with designers to create user-friendly websites.",
+      "_id": {
+        "$oid": "676827c85a971b0e575c1fe5"
+      }
+    },
+    {
+      "jobTitle": "Backend Developer",
+      "company": "10Pearls",
+      "startDate": {
+        "$date": "2019-01-06T00:00:00.000Z"
+      },
+      "endDate": "2020-08-01",
+      "jobDescription": "Created and managed server-side logic for web applications. Integrated databases and third-party services into projects.",
+      "_id": {
+        "$oid": "676827c85a971b0e575c1fe6"
+      }
+    },
+    {
+      "jobTitle": "FullStack Web Developer",
+      "company": "Innovative Solution",
+      "startDate": {
+        "$date": "2021-07-01T00:00:00.000Z"
+      },
+      "endDate": "2022-08-01",
+      "jobDescription": "Developed scalable web applications using Node.js and React.js. Built APIs and led migration to cloud-based architecture.",
+      "_id": {
+        "$oid": "676827c85a971b0e575c1fe7"
+      }
+    },
+    {
+      "jobTitle": "Software Engineer",
+      "company": "DevWorks",
+      "startDate": {
+        "$date": "2022-09-01T00:00:00.000Z"
+      },
+      "endDate": "2024-09-01T00:00:00.000+00:00",
+      "jobDescription": "Developed and optimized backend services using Django. Implemented RESTful APIs to integrate third-party services.",
+      "_id": {
+        "$oid": "676827c85a971b0e575c1fe8"
+      }
+    }
+  ],
+  "projects": [
+    {
+      "projectName": "PhotoGallery Website",
+      "projectSummary": "A Platform for viewing and organizing images.",
+      "projectImage": "/images/photogallery.jpg",
+      "projectLink": "https://www.photo.gallery",
+      "_id": {
+        "$oid": "676827c85a971b0e575c1fe9"
+      }
+    },
+    {
+      "projectName": "Task Management App",
+      "projectSummary": "Simplify task organization with real-time collaboration.",
+      "projectImage": "/images/task.png",
+      "projectLink": "https://www.bitrix24.com",
+      "_id": {
+        "$oid": "676827c85a971b0e575c1fea"
+      }
+    },
+    {
+      "projectName": "Blog Management system",
+      "projectSummary": "A platform for creating and managing blogs with SEO-friendly features.",
+      "projectImage": "/images/blog.png",
+      "projectLink": "https://blogmanagement.io",
+      "_id": {
+        "$oid": "676827c85a971b0e575c1feb"
+      }
+    },
+    {
+      "projectName": "Weather Forecasting App",
+      "projectSummary": "Real-time weather updates based on location.",
+      "projectImage": "/images/weather.jpg",
+      "projectLink": "https://www.msn.com",
+      "_id": {
+        "$oid": "676827c85a971b0e575c1fec"
+      }
+    },
+    {
+      "projectName": "Event Booking Website",
+      "projectSummary": "Develop a website where users can browse and book events.",
+      "projectImage": "/images/events3.jpg",
+      "projectLink": "https://www.booking.com",
+      "_id": {
+        "$oid": "676827c85a971b0e575c1fed"
+      }
+    },
+    {
+      "projectName": "E-commerce App",
+      "projectSummary": "Designed a fully functional online store.",
+      "projectImage": "/images/ecommerce.jpg",
+      "projectLink": "https://pk.sapphireonline.pk",
+      "_id": {
+        "$oid": "676827c85a971b0e575c1fee"
+      }
+    }
+  ],
+  "skills": [
+    {
+      "skillName": "Python for Web Development",
+      "skillSummary": "Experienced in using Python with frameworks like Django and Flask to build robust, scalable web applications.",
+      "skillImage": "/images/python.png",
+      "level": 90,
+      "_id": {
+        "$oid": "676827c85a971b0e575c1fef"
+      }
+    },
+    {
+      "skillName": "Version Control (Git & GitHub)",
+      "skillSummary": "Proficient in using Git and GitHub to manage code, collaborate with teams, and maintain version history.",
+      "skillImage": "/images/git.png",
+      "level": 70,
+      "_id": {
+        "$oid": "676827c85a971b0e575c1ff0"
+      }
+    },
+    {
+      "skillName": "Responsive Web Design",
+      "skillSummary": "Skilled in creating responsive, mobile-first designs using media queries and frameworks like Bootstrap.",
+      "skillImage": "/images/bootstrap.png",
+      "level": 81,
+      "_id": {
+        "$oid": "676827c85a971b0e575c1ff1"
+      }
+    },
+    {
+      "skillName": "React JS Framework",
+      "skillSummary": "Experienced in using modern JavaScript frameworks like React to build dynamic, high-performance web applications.",
+      "skillImage": "/images/react.png",
+      "level": 84,
+      "_id": {
+        "$oid": "676827c85a971b0e575c1ff2"
+      }
+    },
+    {
+      "skillName": "Basic Back-End Development",
+      "skillSummary": "Knowledgeable in back-end technologies like Node.js, with experience in integrating APIs and handling server-side logic.",
+      "skillImage": "/images/node.png",
+      "level": 50,
+      "_id": {
+        "$oid": "676827c85a971b0e575c1ff3"
+      }
+    }
+  ],
+  "contactInfo": {
+    "email": "mustafa.doe@example.com",
+    "phone": "123-456-7890",
+    "address": "G10, Islamabad",
+    "_id": {
+      "$oid": "676827c85a971b0e575c1ff4"
+    }
+  },
+  "socialMedia": {
+    "linkedin": "https://linkedin.com/in/mustafa",
+    "github": "https://github.com/mustafa",
+    "youtube": "https://youtube.com/mustafa",
+    "instagram": "https://instagram.com/mustafa",
+    "twitter": "https://twitter.com/mustafa",
+    "_id": {
+      "$oid": "676827c85a971b0e575c1ff5"
+    }
+  },
+  "createdAt": {
+    "$date": "2024-12-22T14:52:56.935Z"
+  },
+  "__v": 0
+}]

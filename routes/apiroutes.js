@@ -1,13 +1,31 @@
 const express = require('express');
 const router = express.Router();
+const session = require('express-session')
 const Form = require('../models/formSchema'); 
 const User = require('../models/userSchema');
 router.use(express.json());
+router.use(session({
+  secret: 'my-secret',  // a secret string used to sign the session ID cookie
+  resave: false,  // don't save session if unmodified
+  saveUninitialized: false  // don't create session until something stored
+}))
 
-router.get('/education', async (req, res) => {
+function ensureAuthenticated(req, res, next) {
+  if (req.session.email) {
+    next();
+  } else {
+    req.session.email = 'wajdan@gmail.com'; // Hardcoded default email
+    console.log('No session email, using default email:', req.session.email);
+    next();
+  }
+}
+
+
+router.get('/education', ensureAuthenticated, async (req, res) => {
   try {
-    const profile = await Form.findById('676827c85a971b0e575c1fe0').lean();
-    if (!profile) {
+    const profile = await Form.findOne({ 'user.userEmail': req.session.email }).lean();
+ console.log(req.session.email);     
+ if (!profile) {
       return res.status(404).send('Profile not found');
     }
 
@@ -18,10 +36,10 @@ router.get('/education', async (req, res) => {
   }
 });
 
-router.get('/', async (req, res) => {
+router.get('/', ensureAuthenticated, async (req, res) => {
   try {
-    const profile = await Form.findById('676827c85a971b0e575c1fe0').lean();
-    if (!profile) {
+    const profile = await Form.findOne({ 'user.userEmail': req.session.email }).lean();
+ console.log(req.session.email);     if (!profile) {
       return res.status(404).send('Profile not found');
     }
 
@@ -32,10 +50,10 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/about', async (req, res) => {
+router.get('/about', ensureAuthenticated, async (req, res) => {
   try {
-    const profile = await Form.findById('676827c85a971b0e575c1fe0').lean();
-    if (!profile) {
+    const profile = await Form.findOne({ 'user.userEmail': req.session.email }).lean();
+ console.log(req.session.email);     if (!profile) {
       return res.status(404).send('Profile not found');
     }
 
@@ -46,10 +64,10 @@ router.get('/about', async (req, res) => {
   }
 });
 
-router.get('/skills', async (req, res) => {
+router.get('/skills', ensureAuthenticated, async (req, res) => {
   try {
-    const profile = await Form.findById('676827c85a971b0e575c1fe0').lean();
-    if (!profile) {
+    const profile = await Form.findOne({ 'user.userEmail': req.session.email }).lean();
+ console.log(req.session.email);     if (!profile) {
       return res.status(404).send('Profile not found');
     }
 
@@ -60,10 +78,10 @@ router.get('/skills', async (req, res) => {
   }
 });
 
-router.get('/projects', async (req, res) => {
+router.get('/projects', ensureAuthenticated, async (req, res) => {
   try {
-    const profile = await Form.findById('676827c85a971b0e575c1fe0').lean();
-    if (!profile) {
+    const profile = await Form.findOne({ 'user.userEmail': req.session.email }).lean();
+ console.log(req.session.email);     if (!profile) {
       return res.status(404).send('Profile not found');
     }
 
@@ -74,10 +92,10 @@ router.get('/projects', async (req, res) => {
   }
 });
 
-router.get('/resume', async (req, res) => {
+router.get('/resume', ensureAuthenticated, async (req, res) => {
   try {
-    const profile = await Form.findById('676827c85a971b0e575c1fe0').lean();
-    if (!profile) {
+    const profile = await Form.findOne({ 'user.userEmail': req.session.email }).lean();
+ console.log(req.session.email);     if (!profile) {
       return res.status(404).send('Profile not found');
     }
 
@@ -88,10 +106,10 @@ router.get('/resume', async (req, res) => {
   }
 });
 
-router.get('/experience', async (req, res) => {
+router.get('/experience', ensureAuthenticated, async (req, res) => {
   try {
-    const profile = await Form.findById('676827c85a971b0e575c1fe0').lean();
-    if (!profile) {
+    const profile = await Form.findOne({ 'user.userEmail': req.session.email }).lean();
+ console.log(req.session.email);     if (!profile) {
       return res.status(404).send('Profile not found');
     }
 
@@ -106,6 +124,7 @@ router.post('/submit-form', async (req, res) => {
   try {
     const formData = req.body;
     const newForm = new Form(formData);
+    console.log(formData);
 
     await newForm.save();
     res.status(200).json({ message: 'Form submitted successfully!' });
@@ -129,29 +148,41 @@ router.get('/form', async (req, res) => {
   }
 });
 
-router.put('/submit-form/:email', async (req, res) => {
+router.put('/update-form', async (req, res) => {
   try {
-      const user = await User.findOne({ email: req.params });
+    const { user } = req.body;
+    console.log(user);
+    // Check if both userEmail and formId are provided
+    if (!user) {
+      return res.status(400).json({ message: "userEmail and formId are required" });
+    }
 
-      if (!user) {
-          return res.status(404).json({ message: "User not found" });
-      }
+    // Find the form by userEmail and formId
+    const form = await Form.findOne({ user });
 
-      const updatedForm = await Form.findOneAndUpdate(
-          { userId: user._id }, 
-          req.body, 
-          { new: true } 
-      );
+    if (!form) {
+      return res.status(404).json({ message: "Form not found" });
+    }
 
-      if (!updatedForm) {
-          return res.status(404).json({ message: "Form not found" });
-      }
+    // Update the form document with the provided data
+    const updatedForm = await Form.findOneAndUpdate(
+      { user }, // Query to find the form
+      { $set: updateData }, // Update fields with $set to prevent overwriting entire document
+      { new: true } // Return the updated document
+    );
 
-      res.status(200).json({ message: "Form updated successfully", data: updatedForm });
+    if (!updatedForm) {
+      return res.status(404).json({ message: "Failed to update form" });
+    }
+
+    // Return success response with updated form data
+    res.status(200).json({ message: "Form updated successfully", data: updatedForm });
   } catch (error) {
-      res.status(400).json({ message: "Error updating form", error: error.message });
+    console.error(error); // Log the error for debugging purposes
+    res.status(400).json({ message: "Error updating form", error: error.message });
   }
 });
+
 
 router.post('/signup', async (req, res) => {
   try {
@@ -184,6 +215,9 @@ router.post('/login', async (req, res) => {
     if (!isPasswordValid) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
+
+    // Store userId in the session
+    req.session.email = email;
     res.status(200).json({ message: "Login successful" });
   } catch (error) {
     res.status(500).json({ message: "Error logging in", error: error.message });
@@ -234,20 +268,45 @@ router.put('/forget/:email', async (req, res) => {
     }
   });
 
+  router.delete('/delete-form/:email', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        const form = await Form.findOne({ 'user.userEmail': email });
+        if (!form) {
+            return res.status(404).json({ message: "Data not found" });
+        }
+        const isPasswordValid = await Form.findOne({'user.password': password});
+        if (!isPasswordValid) {
+            return res.status(401).json({ message: "Invalid credentials" });
+        }
+
+        const deletedForm = await Form.findOneAndDelete({ 'user.userEmail': email });
+        console.log('Deleted form result:', deletedForm);
+
+        if (deletedForm.deletedCount === 0) {
+            return res.status(404).json({ message: "Form not found or already deleted" });
+        }
+        res.status(200).json({ message: "Form deleted successfully" });
+
+    } catch (error) {
+        res.status(500).json({ message: "An error occurred", error: error.message });
+    }
+});
+
 router.delete('/delete/:email', async (req, res) => {
     try {
         const { email, password } = req.body;
 
         const user = await User.findOne({ email });
+        console.log(`MAIL: " ${ email }`);
         if (!user) {
-            return res.status(404).json({ message: "User not found" });
+            return res.status(404).json({ message: "Data not found" });
         }
-
         const isPasswordValid = await User.findOne({password});
         if (!isPasswordValid) {
             return res.status(401).json({ message: "Invalid credentials" });
         }
-        await Form.deleteOne({ userId: user._id });
 
         const deletedUser = await User.deleteOne({ email });
 

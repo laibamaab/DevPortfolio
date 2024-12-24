@@ -35,11 +35,13 @@ app.get('/user-delete-account', (request, response) =>{
     response.render('delete_account');
 });
 
+app.get('/delete-account', (request, response) =>{
+    response.render('delete_form');
+});
 
 app.use((req, res) => {
     res.status(404).send('Page not found');
   });
-  
 app.listen(7998, ()=>{
     console.log('http://127.0.0.1:7998');
 });

@@ -1,22 +1,7 @@
-const readMoreButtons = document.querySelectorAll(".read-more");
-
-readMoreButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-        const extraText = button.previousElementSibling; // Get the corresponding 'extra-text' element
-        if (extraText.style.display === "inline") {
-            extraText.style.display = "none";
-            button.textContent = "Read More";
-        } else {
-            extraText.style.display = "inline";
-            button.textContent = "Read Less";
-        }
-    });
-});
-
 // Create a notification element
 function createNotification(message) {
     // Check if a notification already exists
-    let notification = document.querySelector('.notification');
+    let notification = document.getElementById('.notification');
     if (!notification) {
         // Create and style the notification element
         notification = document.createElement('div');
@@ -72,16 +57,16 @@ function addMoreSection(sectionClass) {
         return;
     }
 
-    const section = document.querySelector(`.${sectionClass}`);
+    const section = document.getElementById(`.${sectionClass}`);
     if (!section) return; // Exit if no section matches
 
     const newSection = section.cloneNode(true);
 
     // Clear the cloned section's input fields
-    newSection.querySelectorAll("input, textarea").forEach((input) => (input.value = ""));
+    newSection.getElementByIdAll("input, textarea").forEach((input) => (input.value = ""));
 
     // Remove the "Add More" button from the cloned section
-    const addMoreButton = newSection.querySelector('.add-more');
+    const addMoreButton = newSection.getElementById('.add-more');
     if (addMoreButton) addMoreButton.remove();
 
     // Append the cloned section
@@ -105,8 +90,8 @@ document.querySelectorAll('.add-more').forEach((button) => {
 // Collect all form data
 function collectFormData() {
     const formData = {};
-    document.querySelectorAll('input, textarea, select').forEach(input => {
-        formData[input.name] = input.value.trim();
+    document.getElementByIdAll('input, textarea, select').forEach(input => {
+        formData[input.name] = input.value;
     });
     return formData;
 }
@@ -129,8 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const skills = [];
         document.querySelectorAll('.skill-form').forEach(skillForm => {
             const skillData = {
-                skillName: skillForm.querySelector('#skills').value.trim(),
-                skillSummary: skillForm.querySelector('#skillDescription').value.trim(),
+                skillName: skillForm.querySelector('#skills').value,
+                skillSummary: skillForm.querySelector('#skillDescription').value,
                 skillImage: skillForm.querySelector('#skillImage').files[0]?.name || '',
                 level: parseInt(skillForm.querySelector('#proficiency').value, 10) || 50
             };
@@ -139,32 +124,31 @@ document.addEventListener('DOMContentLoaded', () => {
         const education = [];
         document.querySelectorAll('.education-form').forEach(educationForm => {
             const educationData = {
-                degree: educationForm.querySelector('#degree').value.trim(),
-                location: educationForm.querySelector('#location').value.trim(),
-                institution: educationForm.querySelector('#institution').value.trim(),
-                city: educationForm.querySelector('#city').value.trim(),
-                graduation: educationForm.querySelector('#graduation').value.trim()
+                degree: educationForm.querySelector('#degree').value,
+                institution: educationForm.querySelector('#institution').value,
+                city: educationForm.querySelector('#city').value,
+                graduation: educationForm.querySelector('#graduation').value
             };
             education.push(educationData);
         });
         const workExperience = [];
         document.querySelectorAll('.experience-form').forEach(experienceForm => {
             const experienceData = {
-                jobTitle: experienceForm.querySelector('#job-title').value.trim(),
-                company: experienceForm.querySelector('#company').value.trim(),
-                startDate: experienceForm.querySelector('#start-date').value.trim(),
-                endDate: experienceForm.querySelector('#end-date').value.trim(),
-                jobDescription: experienceForm.querySelector('#job-description').value.trim()
+                jobTitle: experienceForm.querySelector('#job-title').value,
+                company: experienceForm.querySelector('#company').value,
+                startDate: experienceForm.querySelector('#start-date').value,
+                endDate: experienceForm.querySelector('#end-date').value,
+                jobDescription: experienceForm.querySelector('#job-description').value
             };
             workExperience.push(experienceData);
         });
         const projects = [];
         document.querySelectorAll('.project-form').forEach(projectsForm => {
             const projectsData = {
-                projectName: projectsForm.querySelector('#project-name').value.trim(),
-                projectSummary: projectsForm.querySelector('#project-description').value.trim(),
-                projectImage: projectsForm.querySelector('#projectImage').value.trim(),
-                projectLink: projectsForm.querySelector('#project-link').value.trim()
+                projectName: projectsForm.querySelector('#project-name').value,
+                projectSummary: projectsForm.querySelector('#project-description').value,
+                projectImage: projectsForm.querySelector('#projectImage').value,
+                projectLink: projectsForm.querySelector('#project-link').value
             };
             projects.push(projectsData);
         });
@@ -212,6 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
             const result = await response.json();
             if (response.ok) {
+                window.location.href = '/';
                 createNotification(method === 'POST' ? 'Form submitted successfully!' : 'Form updated successfully!');
                 event.target.reset(); 
             } else {
@@ -222,28 +207,52 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     
-    document.addEventListener('DOMContentLoaded', () => {
         const form = document.getElementById('resume-form');
         if (form) {
             form.addEventListener('submit', (e) => {
                 handleFormSubmission(e, '/submit-form', 'POST');
             });
-        } else {
-            console.log('Form not found');
-        }
-    });
+        } 
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const form = document.getElementById('resume-update-form');
-        if (form) {
-            form.addEventListener('submit', (e) => {
+        const updateform = document.getElementById('resume-update-form');
+        if (updateform) {
+            updateform.addEventListener('submit', (e) => {
                 handleFormSubmission(e, '/update-form', 'PUT');
             });
-        } else {
-            console.log('Form with ID "resume-update-form" not found');
+        }   
+        
+        // Helper function for API calls
+    async function makeApiRequest(url, method, body = {}) {
+        try {
+            const response = await fetch(url, {
+                method,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(body),
+            });
+            const result = await response.json();
+            if (!response.ok) throw new Error(result.message || 'Request failed');
+            return result;
+        } catch (error) {
+            throw new Error(error.message);
         }
-    });
-        
-        
+    }
+    
+        // Account Deletion
+        const deleteForm = document.getElementById('deleteForm');
+        if (deleteForm) {
+            deleteForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = document.getElementById('deleteEmail').value;
+                const password = document.getElementById('deletePassword').value;
+
+                try {
+                    const result = await makeApiRequest(`/delete-form/${email}`, 'DELETE', { email, password });
+                    createNotification(' deleted successfully');
+                    window.location.href = '/user-signup';
+                } catch (error) {
+                    createNotification('Deletion failed: ' + error.message);
+                }
+            });
+        }
 });
 
