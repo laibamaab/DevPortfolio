@@ -1,0 +1,35 @@
+services:
+  server:
+    build:
+      context: .
+    environment:
+      NODE_ENV: production
+      DB_URI: mongodb://db:27017/portfolio # Match the MongoDB service hostname
+    ports:
+      - "7998:7998"
+    depends_on:
+      db:
+        condition: service_healthy # Wait for MongoDB to be healthy
+    networks:
+      - app-network
+
+  db:
+    image: mongo:5.0
+    restart: always
+    volumes:
+      - mongo-data:/data/db
+    expose:
+      - "27017"
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+
+volumes:
+  mongo-data:
+
+networks:
+  app-network:

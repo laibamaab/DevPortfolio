@@ -42,6 +42,6 @@ app.get('/delete-account', (request, response) =>{
 app.use((req, res) => {
     res.status(404).send('Page not found');
   });
-app.listen(7998, ()=>{
-    console.log('http://127.0.0.1:7998');
+app.listen(7997, ()=>{
+    console.log('http://127.0.0.1:7997');
 });
