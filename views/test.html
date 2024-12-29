@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    
+        .dropdown {
+          margin-left: 43%;
+          width: 270px;
+          height: 20px;
+          border: 2px solid #36454F;
+          padding: 10px;
+          background-color: transparent;
+          position: relative;
+          transition: 0.3s ease;
+        }
+    
+        /* Styling for when dropdown is open, dropdown::after is applied */
+        .dropdown.open {
+          height: 100px;
+        }
+    
+        .options {
+          display: none;
+          margin-top: 10px;
+          margin-left: -10px;
+          width: 270px;
+          padding: 10px;
+          background-color: transparent;
+        }
+    
+        /* Arrow styles */
+        .config-arrow {
+            border: solid black;
+            border-width: 0 3px 3px 0;
+            display: inline-block;
+            padding: 3px;
+            transform: rotate(-135deg);
+            -webkit-transform: rotate(-135deg);
+            cursor: pointer;
+            font-size: 16px;
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+            position: sticky;
+        }
+    
+        .config-arrow.open {
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);/* Rotate arrow when dropdown is open */
+        }
+        .options a {
+            margin-bottom: -20px;
+        }
+      </style>
+</head>
+<body>
+    <div class="dropdown" id="dropdown-container">
+        <span id="config" style="cursor: pointer;">
+          <span>Users</span>
+          <i id="arrow" class="config-arrow arrow"></i>
+        </span>
+    
+        <!-- Options for selection -->
+        <div class="options" id="dropdownOptions">
+          
+            <p>login</p>
+          
+            <p>signup</p>
+          
+            <p>delete </p>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          // Function to toggle the dropdown and the arrow rotation
+          function toggleDropdown() {
+            const dropdownContainer = document.getElementById("dropdown-container");
+            const dropdown = document.getElementById("dropdownOptions");
+            const arrow = document.getElementById("arrow");
+    
+            console.log("dropdownContainer:", dropdownContainer);
+            console.log("dropdown:", dropdown);
+            console.log("arrow:", arrow);  
+    
+            if (dropdownContainer && dropdown && arrow) {
+              dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
+              dropdownContainer.classList.toggle("open");
+              arrow.classList.toggle("open");
+            } else {
+              console.error("dropdownContainer, dropdown, or arrow is missing.");
+            }
+          }
+    
+          function changedropdown() {
+            const arrow = document.getElementById("arrow");
+            const dropdown = document.getElementById("dropdownOptions");
+    
+              // Ensure dropdown remains open after selection and arrow stays rotated
+              if (dropdown && arrow) {
+                arrow.classList.add("open"); // Ensure arrow rotates after selection
+              }
+            }
+    
+          // Add event listeners
+          const configElement = document.getElementById("config");
+          if (configElement) {
+            configElement.addEventListener("click", toggleDropdown);
+          }
+    
+          document.querySelectorAll('input[name="dropdown"]').forEach(input => {
+            input.addEventListener("change", changedropdown);
+          });
+        });
+      </script>
+</body>
+</html>

@@ -21,15 +21,14 @@ function ensureAuthenticated(req, res, next) {
 }
 
 
-router.get('/education', ensureAuthenticated, async (req, res) => {
+router.get('/portfolio', ensureAuthenticated, async (req, res) => {
   try {
     const profile = await Form.findOne({ 'user.userEmail': req.session.email }).lean();
- console.log(req.session.email);     
- if (!profile) {
-      return res.redirect('/user-form');
+    console.log(req.session.email);     
+    if (!profile) {
+          return res.redirect('/user-form');
     }
-
-    res.render('education', { profile });
+    res.render('portfolio', { profile });
   } catch (error) {
     console.error(error);
     res.status(500).send('Server error');
@@ -64,34 +63,6 @@ router.get('/about', ensureAuthenticated, async (req, res) => {
   }
 });
 
-router.get('/skills', ensureAuthenticated, async (req, res) => {
-  try {
-    const profile = await Form.findOne({ 'user.userEmail': req.session.email }).lean();
- console.log(req.session.email);     if (!profile) {
-  return res.redirect('/user-form');
-}
-
-    res.render('skills', { profile });
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Server error');
-  }
-});
-
-router.get('/projects', ensureAuthenticated, async (req, res) => {
-  try {
-    const profile = await Form.findOne({ 'user.userEmail': req.session.email }).lean();
- console.log(req.session.email);     if (!profile) {
-  return res.redirect('/user-form');
-}
-
-    res.render('projects', { profile });
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Server error');
-  }
-});
-
 router.get('/resume', ensureAuthenticated, async (req, res) => {
   try {
     const profile = await Form.findOne({ 'user.userEmail': req.session.email }).lean();
@@ -100,20 +71,6 @@ router.get('/resume', ensureAuthenticated, async (req, res) => {
 }
 
     res.render('resume', { profile });
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Server error');
-  }
-});
-
-router.get('/experience', ensureAuthenticated, async (req, res) => {
-  try {
-    const profile = await Form.findOne({ 'user.userEmail': req.session.email }).lean();
- console.log(req.session.email);     if (!profile) {
-  return res.redirect('/user-form');
-}
-
-    res.render('education', { profile });
   } catch (error) {
     console.error(error);
     res.status(500).send('Server error');
@@ -187,7 +144,6 @@ router.put('/update-form', async (req, res) => {
     res.status(400).json({ message: "Error updating form", error: error.message });
   }
 });
-
 
 router.post('/signup', async (req, res) => {
   try {

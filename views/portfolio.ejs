@@ -1,0 +1,53 @@
+<%- include('partials/header.ejs') %>
+<div class="home-container">
+    <div class="bio-container">
+        <div class="bio">
+            <h1>Welcome to<br>Full Stack solutions<br>Where quality meets efficiency</h1>
+            <p>
+                Hi, I’m <strong style="color: #36454F"><%= profile.personalInfo.name %></strong>, <%= profile.personalInfo.bio %>
+            </p>
+            <p>
+                I’m committed to writing clean, maintainable code and using the latest technologies to deliver intuitive solutions that meet client needs and exceed expectations. Let’s turn your ideas into reality with custom web applications, API integrations, and solid backend infrastructure.
+            </p>
+        </div>
+        <div class="circle" style="background-image: url('<%= profile.personalInfo.imagePath %>');"></div>
+    </div>
+</div>
+<hr>
+<!-- About Section -->
+<div class="about-container" id="about">
+    <section class="about">
+        <div class="about-column1">
+            <h1> ABOUT</h1>
+            <h3>Personal Details</h3>
+            <p>
+                3+ years of experience in <%= profile.personalInfo.fieldTitle %>, specializing in HTML, CSS, and JavaScript.
+                Focused on responsive design, performance optimization, and user-centric solutions.
+                Experienced in collaborating with teams to deliver efficient, scalable websites.
+            </p>
+            <ul style="list-style: none;">
+                <li><b style="margin-right: 80px">Full Name :</b><%= profile.personalInfo.name %></li>
+                <li><b style="margin-right: 50px">Father’s Name :</b><%= profile.personalInfo.fatherName %></li>
+                <li><b style="margin-right: 60px">Date of Birth :</b><%= new Date(profile.personalInfo.dateOfBirth).toLocaleDateString() %></li>
+                <li><b style="margin-right: 82px">CNIC No :</b><%= profile.personalInfo.cnic %></li>
+                <li><b style="margin-right: 73px">Nationality :</b><%= profile.personalInfo.nationality %></li>
+                <li><b style="margin-right: 48px">Marital Status :</b><%= profile.personalInfo.maritalStatus %></li>
+            </ul>
+            <a href="/resume"><button>Check Resume</button></a>
+        </div>
+    </section>
+    <div class="about-column2">
+        <div class="image1">
+            <img src="/images/frontend.jpg" alt="frontend picture">
+        </div>
+        <div class="image2">
+            <img src="/images/backend.jpg" alt="backend picture">
+        </div>
+    </div>
+</div>
+<hr>
+<%- include('skills.ejs') %>
+<%- include('education.ejs') %>
+<%- include('projects.ejs') %>
+<%- include('partials/footer.ejs') %>
+<script src="javascript/index.js"></script>
