@@ -26,7 +26,7 @@ router.get('/education', ensureAuthenticated, async (req, res) => {
     const profile = await Form.findOne({ 'user.userEmail': req.session.email }).lean();
  console.log(req.session.email);     
  if (!profile) {
-      return res.status(404).send('Profile not found');
+      return res.redirect('/user-form');
     }
 
     res.render('education', { profile });
@@ -40,8 +40,8 @@ router.get('/', ensureAuthenticated, async (req, res) => {
   try {
     const profile = await Form.findOne({ 'user.userEmail': req.session.email }).lean();
  console.log(req.session.email);     if (!profile) {
-      return res.status(404).send('Profile not found');
-    }
+  return res.redirect('/user-form');
+}
 
     res.render('home', { profile });
   } catch (error) {
@@ -54,8 +54,8 @@ router.get('/about', ensureAuthenticated, async (req, res) => {
   try {
     const profile = await Form.findOne({ 'user.userEmail': req.session.email }).lean();
  console.log(req.session.email);     if (!profile) {
-      return res.status(404).send('Profile not found');
-    }
+  return res.redirect('/user-form');
+}
 
     res.render('about', { profile });
   } catch (error) {
@@ -68,8 +68,8 @@ router.get('/skills', ensureAuthenticated, async (req, res) => {
   try {
     const profile = await Form.findOne({ 'user.userEmail': req.session.email }).lean();
  console.log(req.session.email);     if (!profile) {
-      return res.status(404).send('Profile not found');
-    }
+  return res.redirect('/user-form');
+}
 
     res.render('skills', { profile });
   } catch (error) {
@@ -82,8 +82,8 @@ router.get('/projects', ensureAuthenticated, async (req, res) => {
   try {
     const profile = await Form.findOne({ 'user.userEmail': req.session.email }).lean();
  console.log(req.session.email);     if (!profile) {
-      return res.status(404).send('Profile not found');
-    }
+  return res.redirect('/user-form');
+}
 
     res.render('projects', { profile });
   } catch (error) {
@@ -96,8 +96,8 @@ router.get('/resume', ensureAuthenticated, async (req, res) => {
   try {
     const profile = await Form.findOne({ 'user.userEmail': req.session.email }).lean();
  console.log(req.session.email);     if (!profile) {
-      return res.status(404).send('Profile not found');
-    }
+  return res.redirect('/user-form');
+}
 
     res.render('resume', { profile });
   } catch (error) {
@@ -110,8 +110,8 @@ router.get('/experience', ensureAuthenticated, async (req, res) => {
   try {
     const profile = await Form.findOne({ 'user.userEmail': req.session.email }).lean();
  console.log(req.session.email);     if (!profile) {
-      return res.status(404).send('Profile not found');
-    }
+  return res.redirect('/user-form');
+}
 
     res.render('education', { profile });
   } catch (error) {
@@ -146,6 +146,11 @@ router.get('/form', async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: "Error fetching forms", error: error.message });
   }
+});
+
+router.get('/user-form', (request, response) =>{
+  email = request.session.email;
+  response.render('Form', {email});
 });
 
 router.put('/update-form', async (req, res) => {

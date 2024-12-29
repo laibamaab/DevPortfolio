@@ -1,17 +1,7 @@
 <%- include('partials/header.ejs') %>
     <form id="resume-form" method="post">
         <div class="form-container">
-            <div class="form-section personal-form">
-                <h2>Account Information</h2>
-                <div class="form-group">
-                    <label for="user-mail">Email:</label>
-                    <input type="mail" id="user-mail" name="user-mail" placeholder="Please enter your account email."  style="height: 30px; width: 52.5%;">
-                </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" placeholder="Please enter your account password."  style="height: 30px; width: 52.5%;">
-                </div>
-            </div>
+            <input type="hidden" id="userEmail" value="<%= email %>">
             <!-- Personal Information -->
             <div class="form-section personal-form">
                 <h2>Personal Information</h2>

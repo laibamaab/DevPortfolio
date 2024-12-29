@@ -20,3 +20,7 @@ docs for more detail on building and pushing.
 
 ### References
 * [Docker's Node.js guide](https://docs.docker.com/language/nodejs/)
+
+### Deploy it on server
+pull it on server. `docker pull anum0349/dev_portfolio:v1`.
+run this cmd to make it live `docker run -d -p 7997:7997 --name portfolio-app   -e DB_URI=mongodb://mongodb:27017/portfolio   --link mongodb:mongodb   anum0349/dev_portfolio:v1`.

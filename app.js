@@ -11,10 +11,6 @@ app.use('/', routes);
 
 database();
 
-app.get('/user-form', (request, response) =>{
-    response.render('Form');
-});
-
 app.get('/portfolio-form', (request, response) =>{
     response.render('updateForm');
 });
@@ -42,6 +38,6 @@ app.get('/delete-account', (request, response) =>{
 app.use((req, res) => {
     res.status(404).send('Page not found');
   });
-app.listen(7997, ()=>{
-    console.log('http://127.0.0.1:7997');
+app.listen(7996, ()=>{
+    console.log('http://127.0.0.1:7996');
 });

@@ -2,6 +2,7 @@ services:
   server:
     build:
       context: .
+    image: anum0349/dev_portfolio:v1
     environment:
       NODE_ENV: production
       DB_URI: mongodb://db:27017/portfolio # Match the MongoDB service hostname
@@ -14,7 +15,7 @@ services:
       - app-network
 
   db:
-    image: mongo:5.0
+    image: anum0349/mongo_db:v1
     restart: always
     volumes:
       - mongo-data:/data/db

@@ -1,3 +1,76 @@
+const readMoreButtons = document.querySelectorAll(".read-more");
+
+readMoreButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        const extraText = button.previousElementSibling; // Get the corresponding 'extra-text' element
+        if (extraText.style.display === "inline") {
+            extraText.style.display = "none";
+            button.textContent = "Read More";
+        } else {
+            extraText.style.display = "inline";
+            button.textContent = "Read Less";
+        }
+    });
+});
+
+// Function to add more sections dynamically
+function addMoreSection(sectionClass) {
+    // Check if the section can be added based on the limit
+    if (sectionCounters[sectionClass] >= sectionLimits[sectionClass]) {
+        createNotification(`You can only add up to ${sectionLimits[sectionClass]} ${sectionClass.replace('-', ' ')} sections.`);
+        return;
+    }
+
+    const section = document.querySelector(`.${sectionClass}`);
+    if (!section) return; // Exit if no section matches
+
+    const newSection = section.cloneNode(true);
+
+    // Clear the cloned section's input fields
+    newSection.querySelectorAll("input, textarea").forEach((input) => (input.value = ""));
+
+    // Remove the "Add More" button from the cloned section
+    const addMoreButton = newSection.querySelector('.add-more');
+    if (addMoreButton) addMoreButton.remove();
+
+    // Append the cloned section
+    section.parentNode.insertBefore(newSection, section.nextSibling);
+
+    // Increment the section counter
+    sectionCounters[sectionClass]++;
+}
+
+// Add event listeners to all "Add More" buttons
+document.querySelectorAll('.add-more').forEach((button) => {
+    button.addEventListener('click', (event) => {
+        // Get the section class from the button's data attribute
+        const sectionClass = button.getAttribute('data-section-class');
+        if (sectionClass) {
+            addMoreSection(sectionClass);
+        }
+    });
+});
+
+// Collect all form data
+function collectFormData() {
+    const formData = {};
+    document.querySelectorAll('input, textarea, select').forEach(input => {
+        formData[input.name] = input.value.trim();
+    });
+    return formData;
+}
+
+// Validate the form fields
+function validateForm(data) {
+    for (const key in data) {
+        if (!data[key]) {
+            console.warn(`Missing field: ${key}`);
+            return false;
+        }
+    }
+    return true;
+}
+
 // Create a notification element
 function createNotification(message) {
     // Check if a notification already exists
@@ -49,63 +122,18 @@ const sectionCounters = {
     'skill-form': 1,
 };
 
-// Function to add more sections dynamically
-function addMoreSection(sectionClass) {
-    // Check if the section can be added based on the limit
-    if (sectionCounters[sectionClass] >= sectionLimits[sectionClass]) {
-        createNotification(`You can only add up to ${sectionLimits[sectionClass]} ${sectionClass.replace('-', ' ')} sections.`);
-        return;
-    }
-
-    const section = document.getElementById(`.${sectionClass}`);
-    if (!section) return; // Exit if no section matches
-
-    const newSection = section.cloneNode(true);
-
-    // Clear the cloned section's input fields
-    newSection.getElementByIdAll("input, textarea").forEach((input) => (input.value = ""));
-
-    // Remove the "Add More" button from the cloned section
-    const addMoreButton = newSection.getElementById('.add-more');
-    if (addMoreButton) addMoreButton.remove();
-
-    // Append the cloned section
-    section.parentNode.insertBefore(newSection, section.nextSibling);
-
-    // Increment the section counter
-    sectionCounters[sectionClass]++;
-}
-
-// Add event listeners to all "Add More" buttons
-document.querySelectorAll('.add-more').forEach((button) => {
-    button.addEventListener('click', (event) => {
-        // Get the section class from the button's data attribute
-        const sectionClass = button.getAttribute('data-section-class');
-        if (sectionClass) {
-            addMoreSection(sectionClass);
+readMoreButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        const extraText = button.previousElementSibling; // Get the corresponding 'extra-text' element
+        if (extraText.style.display === "inline") {
+            extraText.style.display = "none";
+            button.textContent = "Read More";
+        } else {
+            extraText.style.display = "inline";
+            button.textContent = "Read Less";
         }
     });
 });
-
-// Collect all form data
-function collectFormData() {
-    const formData = {};
-    document.getElementByIdAll('input, textarea, select').forEach(input => {
-        formData[input.name] = input.value;
-    });
-    return formData;
-}
-
-// Validate the form fields
-function validateForm(data) {
-    for (const key in data) {
-        if (!data[key]) {
-            console.warn(`Missing field: ${key}`);
-            return false;
-        }
-    }
-    return true;
-}
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -152,8 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
             projects.push(projectsData);
         });
-        const userEmail = document.getElementById('user-mail').value;
-        const password = document.getElementById('password').value;
+        const userEmail = document.getElementById('userEmail').value;
         const name= document.getElementById('name').value;
         const fatherName= document.getElementById('fatherName').value;
         const cnic= document.getElementById('cnic').value;
@@ -173,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const twitter= document.getElementById('twitter').value;
         const instagram= document.getElementById('instagram').value;
         const formData = {
-            user: { userEmail, password },
+            user: { userEmail },
             personalInfo: { name, fatherName, cnic, nationality,
                 dateOfBirth, maritalStatus, fieldTitle,
                 gender, imagePath,  bio },
@@ -184,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
             contactInfo: { email, phone, address },
             socialMedia: { linkedin, github, youtube, twitter, instagram }
         };
-        
+        console.log("mail: :",userEmail);
         try {
             const response = await fetch(apiEndpoint, {
                 method,
