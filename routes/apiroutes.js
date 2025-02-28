@@ -15,16 +15,26 @@ function ensureAuthenticated(req, res, next) {
     next();
   } else {
     req.session.email = 'wajdan@gmail.com'; // Hardcoded default email
-    console.log('No session email, using default email:', req.session.email);
     next();
   }
 }
 
+router.get('/projects', ensureAuthenticated, async (req, res) => {
+  try {
+    const profile = await Form.findOne({ 'user.userEmail': req.session.email }).lean();
+    if (!profile) {
+          return res.redirect('/user-form');
+    }
+    res.render('projects', { profile });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Server error');
+  }
+});
 
 router.get('/portfolio', ensureAuthenticated, async (req, res) => {
   try {
     const profile = await Form.findOne({ 'user.userEmail': req.session.email }).lean();
-    console.log(req.session.email);     
     if (!profile) {
           return res.redirect('/user-form');
     }
@@ -38,7 +48,7 @@ router.get('/portfolio', ensureAuthenticated, async (req, res) => {
 router.get('/', ensureAuthenticated, async (req, res) => {
   try {
     const profile = await Form.findOne({ 'user.userEmail': req.session.email }).lean();
- console.log(req.session.email);     if (!profile) {
+     if (!profile) {
   return res.redirect('/user-form');
 }
 
@@ -52,7 +62,7 @@ router.get('/', ensureAuthenticated, async (req, res) => {
 router.get('/about', ensureAuthenticated, async (req, res) => {
   try {
     const profile = await Form.findOne({ 'user.userEmail': req.session.email }).lean();
- console.log(req.session.email);     if (!profile) {
+     if (!profile) {
   return res.redirect('/user-form');
 }
 
@@ -66,7 +76,7 @@ router.get('/about', ensureAuthenticated, async (req, res) => {
 router.get('/resume', ensureAuthenticated, async (req, res) => {
   try {
     const profile = await Form.findOne({ 'user.userEmail': req.session.email }).lean();
- console.log(req.session.email);     if (!profile) {
+     if (!profile) {
   return res.redirect('/user-form');
 }
 
@@ -81,7 +91,6 @@ router.post('/submit-form', async (req, res) => {
   try {
     const formData = req.body;
     const newForm = new Form(formData);
-    console.log(formData);
 
     await newForm.save();
     res.status(200).json({ message: 'Form submitted successfully!' });
@@ -113,7 +122,6 @@ router.get('/user-form', (request, response) =>{
 router.put('/update-form', async (req, res) => {
   try {
     const { user } = req.body;
-    console.log(user);
     // Check if both userEmail and formId are provided
     if (!user) {
       return res.status(400).json({ message: "userEmail and formId are required" });
@@ -167,7 +175,7 @@ router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const user = await User.findOne({ email });
+    let user = await User.findOne({ email });
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -177,9 +185,11 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
+    user = user.toObject()
+    delete user.password
     // Store userId in the session
     req.session.email = email;
-    res.status(200).json({ message: "Login successful" });
+    res.status(200).json({ message: "Login successful", user });
   } catch (error) {
     res.status(500).json({ message: "Error logging in", error: error.message });
   }
@@ -243,7 +253,6 @@ router.put('/forget/:email', async (req, res) => {
         }
 
         const deletedForm = await Form.findOneAndDelete({ 'user.userEmail': email });
-        console.log('Deleted form result:', deletedForm);
 
         if (deletedForm.deletedCount === 0) {
             return res.status(404).json({ message: "Form not found or already deleted" });
@@ -260,7 +269,6 @@ router.delete('/delete/:email', async (req, res) => {
         const { email, password } = req.body;
 
         const user = await User.findOne({ email });
-        console.log(`MAIL: " ${ email }`);
         if (!user) {
             return res.status(404).json({ message: "Data not found" });
         }

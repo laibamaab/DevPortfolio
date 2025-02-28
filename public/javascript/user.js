@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 const result = await makeApiRequest('/login', 'POST', { email, password });
                 createNotification(result.message);
-                localStorage.setItem('userId', result.userId);
+                localStorage.setItem('userId', JSON.stringify(result.user));
                 window.location.href = '/';
             } catch (error) {
                 createNotification('Login failed: ' + error.message);

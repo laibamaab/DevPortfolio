@@ -35,6 +35,7 @@ const projectSchema = new mongoose.Schema({
 
 const userSchema = new mongoose.Schema({
   userEmail: { type: String, required: true },
+  userId: String
 });
 
 const personalInfoSchema = new mongoose.Schema({

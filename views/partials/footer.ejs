@@ -15,27 +15,46 @@
                     <li style="display: flex">Address:&nbsp;&nbsp;&nbsp;&nbsp;<address><%= profile.contactInfo.address %></address></li>
                 </ul>
                 <ul class="social-details">
-                    <li>
-                        <a href="<%= profile.socialMedia.youtube %>" target="_blank">
-                        <img src="/images/youtube.png" alt="youtube icon"></a>
-                    </li>
-                    <li>
-                        <a href="<%= profile.socialMedia.instagram %>" target="_blank">
-                        <img src="/images/instagram.png" alt="instagram icon"></a>
-                    </li>
-                    <li>
-                        <a href="<%= profile.socialMedia.linkedin %>" target="_blank">
-                        <img src="/images/linkedin.png" alt="linkedin icon"></a>
-                    </li>
-                    <li>
-                        <a href="<%= profile.socialMedia.github %>" target="_blank">
-                        <img src="/images/github.png" alt="github icon"></a>
-                    </li>
-                    <li>
-                        <a href="<%= profile.socialMedia.twitter %>" target="_blank">
-                        <img src="/images/twitter.png" alt="twitter icon"></a>
-                    </li>
-                </ul>
+                    <% if (profile.socialMedia.youtube) { %>
+                        <li>
+                            <a href="<%= profile.socialMedia.youtube %>" target="_blank">
+                                <img src="/images/youtube.png" alt="YouTube icon">
+                            </a>
+                        </li>
+                    <% } %>
+                
+                    <% if (profile.socialMedia.instagram) { %>
+                        <li>
+                            <a href="<%= profile.socialMedia.instagram %>" target="_blank">
+                                <img src="/images/instagram.png" alt="Instagram icon">
+                            </a>
+                        </li>
+                    <% } %>
+                
+                    <% if (profile.socialMedia.linkedin) { %>
+                        <li>
+                            <a href="<%= profile.socialMedia.linkedin %>" target="_blank">
+                                <img src="/images/linkedin.png" alt="LinkedIn icon">
+                            </a>
+                        </li>
+                    <% } %>
+                
+                    <% if (profile.socialMedia.github) { %>
+                        <li>
+                            <a href="<%= profile.socialMedia.github %>" target="_blank">
+                                <img src="/images/github.png" alt="GitHub icon">
+                            </a>
+                        </li>
+                    <% } %>
+                
+                    <% if (profile.socialMedia.twitter) { %>
+                        <li>
+                            <a href="<%= profile.socialMedia.twitter %>" target="_blank">
+                                <img src="/images/twitter.png" alt="Twitter icon">
+                            </a>
+                        </li>
+                    <% } %>
+                </ul>    
             </div>
         </div>
     </section>

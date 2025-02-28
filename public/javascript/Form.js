@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const skillData = {
                 skillName: skillForm.querySelector('#skills').value,
                 skillSummary: skillForm.querySelector('#skillDescription').value,
-                skillImage: skillForm.querySelector('#skillImage').files[0]?.name || '',
+                skillImage: "/images/"+skillForm.querySelector('#skillImage').files[0]?.name || '',
                 level: parseInt(skillForm.querySelector('#proficiency').value, 10) || 50
             };
             skills.push(skillData);
@@ -175,12 +175,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const projectsData = {
                 projectName: projectsForm.querySelector('#project-name').value,
                 projectSummary: projectsForm.querySelector('#project-description').value,
-                projectImage: projectsForm.querySelector('#projectImage').value,
+                projectImage: "/images/"+projectsForm.querySelector('#projectImage').value,
                 projectLink: projectsForm.querySelector('#project-link').value
             };
             projects.push(projectsData);
         });
-        const userEmail = document.getElementById('userEmail').value;
         const name= document.getElementById('name').value;
         const fatherName= document.getElementById('fatherName').value;
         const cnic= document.getElementById('cnic').value;
@@ -189,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const maritalStatus= document.getElementById('maritalStatus').value;
         const fieldTitle= document.getElementById('title').value;
         const gender= document.getElementById('gender').value;
-        const imagePath= document.getElementById('image').files[0]?.name || ''; 
+        const imagePath= "/images/"+document.getElementById('image').files[0]?.name || ''; 
         const bio= document.getElementById('bio').value;   
         const email= document.getElementById('email').value;
         const phone= document.getElementById('phone').value;
@@ -199,8 +198,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const youtube= document.getElementById('youtube').value;
         const twitter= document.getElementById('twitter').value;
         const instagram= document.getElementById('instagram').value;
+        const userId = JSON.parse(localStorage.getItem('userId'))?._id || null;
+        const userEmail = JSON.parse(localStorage.getItem('userId'))?.email || null;
+        console.log("User ID:", userId);    
+        console.log(imagePath)    
         const formData = {
-            user: { userEmail },
+            user: { userEmail, userId },
             personalInfo: { name, fatherName, cnic, nationality,
                 dateOfBirth, maritalStatus, fieldTitle,
                 gender, imagePath,  bio },

@@ -1,4 +1,6 @@
 <!-- Projects Section -->
+<%- include('partials/header.ejs') %>
+
 <div class="project-container" id="projects">
     <h1>My projects</h1>
     <div class="project-grid">
@@ -7,7 +9,7 @@
                 <img src="<%= project.projectImage %>" alt="<%= project.projectName %>">
                 <a href="<%= project.projectLink %>" target="_blank"><h4><%= project.projectName%></h4></a>
                 <p style="font-size: .9rem;">
-                    <%= project.projectName %>
+                    <%= project.projectSummary.split(0,2) %>
                     <span class="hidden" id="extra-text">
                         <%= project.projectSummary %>
                     </span>
@@ -19,6 +21,8 @@
 </div>
 
 <hr style="margin-top: 80px;">
+<%- include('partials/footer.ejs') %>
+
 <script src="/javascript/index.js"></script>
 </body>
 </html>
