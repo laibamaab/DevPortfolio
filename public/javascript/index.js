@@ -35,6 +35,22 @@
           }
     
     });
+      
+const readMoreButtons = document.querySelectorAll(".read-more");
+
+    readMoreButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const extraText = button.previousElementSibling; // Get the corresponding 'extra-text'
+            if (extraText.classList.contains("hidden")) {
+                extraText.classList.remove("hidden");
+                button.textContent = "Read Less";
+            } else {
+                extraText.classList.add("hidden");
+                button.textContent = "Read More";
+            }
+        });
+    });
+    
     // Get the button
     let mybutton = document.getElementById("goTop");
 
