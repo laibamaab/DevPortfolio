@@ -1,58 +1,87 @@
 # DevPortfolio
 
-Welcome to **DevPortfolio**, a beautifully designed personal portfolio website built using **Express.js** and **EJS (Embedded JavaScript)** templating engine. This project showcases my skills, projects, and professional journey as a passionate web developer.
+**DevPortfolio** is a modern, responsive personal portfolio website built using **Express.js** and **EJS (Embedded JavaScript)**.  
+It serves as a professional showcase for skills, projects, and career highlights, with an elegant UI and seamless user experience.
 
----
 
 ## Features
 
-- **Dynamic Content**: Uses **EJS** for rendering dynamic content.
-- **Responsive Design**: Fully responsive and mobile-friendly using **CSS** and frameworks like **Bootstrap**.
-- **Modern UI/UX**: Clean and user-friendly design with a focus on visual aesthetics.
-- **Contact Form**: A functional form to receive client inquiries (optional backend integration).
-- **Resume Download**: Option to download the resume directly.
-- **Project Showcases**: Detailed presentation of projects with images and descriptions.
+- **Dynamic Content**: Rendered with **EJS** for flexibility and reusability.
+- **Responsive Design**: Mobile-friendly layout using **Bootstrap** and custom CSS.
+- **Clean UI/UX**: Minimalist, professional look for better user engagement.
+- **Contact Form**: Functional inquiry form (can be integrated with backend email services).
+- **Resume Download**: Quick access to a downloadable resume.
+- **Project Showcase**: Organized portfolio section with images, descriptions, and links.
 
 ---
 
 ## Tech Stack
 
-### **Frontend**
-- **HTML**: Markup for structuring content.
-- **CSS3**: Styling for the visual design.
-- **JavaScript**: Enhancements and interactivity.
+**Frontend**  
+- HTML5 – Content structure  
+- CSS3 – Styling & animations  
+- JavaScript (Vanilla) – Interactive elements  
 
-### **Backend**
-- **Node.js**: JavaScript runtime for server-side execution.
-- **Express.js**: Web framework for building the server.
-- **EJS**: Templating engine for dynamic content rendering.
+**Backend**  
+- Node.js – Server-side runtime  
+- Express.js – Web application framework  
+- EJS – Template rendering engine  
 
-### **Others**
-- **Git/GitHub**: Version control and code hosting.
-- **Google Fonts**: For elegant typography.
-- **Images and Icons**: High-quality graphics for visual appeal.
+**Others**  
+- Git/GitHub – Version control  
+- Google Fonts – Custom typography  
+- Icons & Images – Visual enhancements
 
----
 
-## Team Members
+## Folder Structure
 
-- **Marryia Shamshad**: Reg-> 4525-FOC/BSSE-F22-B
-- **Javeria Fayaz**:    Reg-> 4462-FOC/BSSE-F22-B
-- **Iffat e Hafsa**:    Reg-> 4559-FOC/BSSE-F22-B
-- **Anum Kousar**:      Reg-> 4503-FOC/BSSE-F22-B
-- **Laiba Maab**:       Reg-> 4522-FOC/BSSE-F22-B
+DevPortfolio/
+│
+├── public/           # CSS, JS, images, and static assets
+├── views/            # EJS templates
+├── app.js            # Main application file
+├── package.json      # Project metadata & dependencies
+├── db/               # mongodb database
+└── README.md         # Documentation
 
 ## Setup Instructions
 
-Follow these steps to set up the project on your local machine:
-
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/anum-349/DevPortfolio.git
+1. **Clone the Repository**
+   bash
+   git clone https://github.com/<your-username>/DevPortfolio.git
    cd DevPortfolio
-2. **Install Dependencies:**:
+
+2. **Install Dependencies**
+
    ```bash
    npm install
-3. **Run the Server:**:
+   ```
+
+3. **Run the Server**
+
    ```bash
    node app.js
+   ```
+
+4. **Open in Browser**
+
+   ```
+   http://localhost:3000
+   ```
+
+---
+
+## Contributing
+
+If you’d like to contribute:
+
+1. Fork this repository.
+2. Create a new branch: `git checkout -b feature-branch-name`
+3. Commit your changes: `git commit -m "Description of changes"`
+4. Push to the branch: `git push origin feature-branch-name`
+5. Open a Pull Request.
+
+
+## License
+
+This project is licensed under the **MIT License** – see the [LICENSE](LICENSE) file for details.
